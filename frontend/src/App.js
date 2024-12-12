@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      <h1>¡Hola, bienvenido a react definitivo del todo!</h1>
+      <h1>¡Provando deploy!</h1>
     </div>
   );
 }
