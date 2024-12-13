@@ -31,7 +31,6 @@ jobs:
 
       # 5. Despliega la aplicación en Fly.io
       - name: Deploy to Fly.io
-        uses: superfly/flyctl-actions@master
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
+        run: flyctl deploy
