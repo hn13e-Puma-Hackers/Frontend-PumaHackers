@@ -33,7 +33,7 @@ jobs:
       - name: Install Flyctl
         run: |
           curl -L https://fly.io/install.sh | sh
-          export PATH=$HOME/.fly/bin:$PATH
+          echo "$HOME/.fly/bin" >> $GITHUB_PATH
 
       # 6. Despliega la aplicación en Fly.io
       - name: Deploy to Fly.io
