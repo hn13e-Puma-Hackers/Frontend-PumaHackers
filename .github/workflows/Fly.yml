@@ -15,6 +15,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+       # 2. Instala Node.js y dependencias
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+
+      # 3. Genera los archivos estáticos
+      - name: Build static files
+        run: npm run build
+
       # 2. Instala Flyctl
       - name: Install Flyctl
         run: |
