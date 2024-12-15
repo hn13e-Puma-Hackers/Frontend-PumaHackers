@@ -1,8 +1,11 @@
+// src/App.js
+import React from 'react';
+import MainPage from './views/submissionsList'; // Ajusta la ruta si el archivo está en otro directorio
 
 function App() {
   return (
     <div>
-      <h1>¡Provando deploy 2!</h1>
+      <MainPage />
     </div>
   );
 }

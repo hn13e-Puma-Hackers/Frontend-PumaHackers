@@ -1,0 +1,10 @@
+.favorite-link:hover,
+.hide-link:hover,
+.unvotetext:hover {
+  text-decoration: underline;
+}
+
+.votearrow {
+  cursor: pointer;
+  visibility: visible;
+}
