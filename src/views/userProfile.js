@@ -4,37 +4,45 @@ import axios from 'axios';
 import TopBar from '../components/topBar';
 
 const UserProfile = () => {
-  const { username } = useParams(); // Extraer el username desde la URL
+  const { username } = useParams();
   const [profile, setProfile] = useState(null);
-  const [isOwnProfile, setIsOwnProfile] = useState(false); // Identificar si es el perfil propio
-  const [editMode, setEditMode] = useState(false); // Estado para alternar entre vista y edición
+  const [isOwnProfile, setIsOwnProfile] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
     about: '',
     banner: null,
     avatar: null,
   });
 
+  const apiKey = 'u3o5nyf6.IElFeLGqYUHZpdf8jPMoT9HcHFbvv0YN'; // Tu API Key
+
+  // Función para cargar el perfil desde la API
+  const fetchProfile = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/profile/${username}/`, {
+        headers: {
+          Authorization: apiKey,
+        },
+      });
+      setProfile(response.data);
+
+      // Determinar si es el perfil propio
+      const loggedInUser = 'xavier'; // Cambiar por lógica dinámica
+      setIsOwnProfile(username === loggedInUser);
+
+      // Inicializar valores en el formulario
+      setFormData({
+        about: response.data.about || '',
+        banner: null,
+        avatar: null,
+      });
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
+
+  // Cargar el perfil al iniciar el componente
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/profile/${username}/`);
-        setProfile(response.data);
-
-        // Determinar si es el perfil propio (hardcoded por ahora)
-        const loggedInUser = 'xavier'; // Cambiar esto dinámicamente según sea necesario
-        setIsOwnProfile(username === loggedInUser);
-
-        // Inicializar valores en el formulario
-        setFormData({
-          about: response.data.about || '',
-          banner: null,
-          avatar: null,
-        });
-      } catch (error) {
-        console.error('Error fetching profile:', error);
-      }
-    };
-
     fetchProfile();
   }, [username]);
 
@@ -52,6 +60,8 @@ const UserProfile = () => {
     e.preventDefault();
     const updateData = new FormData();
     updateData.append('about', formData.about);
+
+    // Solo añadir banner o avatar si hay nuevos valores
     if (formData.banner) {
       updateData.append('banner', formData.banner);
     }
@@ -60,10 +70,19 @@ const UserProfile = () => {
     }
 
     try {
-      await axios.post(`http://127.0.0.1:8000/api/profile/${username}/update/`, updateData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      // Realiza la solicitud PATCH
+      await axios.patch('http://127.0.0.1:8000/api/profile/', updateData, {
+        headers: {
+          Authorization: apiKey,
+          'Content-Type': 'multipart/form-data',
+        },
       });
+
       alert('Profile updated successfully!');
+
+      // Vuelve a cargar el perfil actualizado
+      fetchProfile();
+
       setEditMode(false);
       setFormData({ ...formData, banner: null, avatar: null }); // Limpiar archivos seleccionados
     } catch (error) {
@@ -80,7 +99,6 @@ const UserProfile = () => {
     <>
       <TopBar />
       <div className="profile-container" style={{ width: '85%', margin: '0 auto', textAlign: 'left' }}>
-        {/* Mostrar el banner */}
         <div className="profile-banner-container" style={{ display: 'flex', justifyContent: 'center' }}>
           <img
             src={profile.banner || 'https://via.placeholder.com/800x200'}
@@ -90,7 +108,6 @@ const UserProfile = () => {
           />
         </div>
 
-        {/* Mostrar el avatar */}
         <div className="profile-avatar-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '-100px' }}>
           <img
             src={profile.avatar || 'https://via.placeholder.com/150'}
@@ -106,7 +123,6 @@ const UserProfile = () => {
           />
         </div>
 
-        {/* Información del perfil */}
         <div style={{ marginTop: '20px' }}>
           <div className="field">
             <strong>Usuario:</strong> {profile.username}
@@ -134,7 +150,6 @@ const UserProfile = () => {
           )}
         </div>
 
-        {/* Enlaces */}
         <div className="links-section" style={{ marginTop: '20px' }}>
           <a href={`/profile/${profile.username}/submissions`}>Submissions</a> |
           <a href={`/profile/${profile.username}/comments`}> Comments</a>
@@ -146,7 +161,6 @@ const UserProfile = () => {
           )}
         </div>
 
-        {/* Formulario de edición */}
         {isOwnProfile && (
           <>
             {editMode ? (
