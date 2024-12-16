@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './submissionItem.css';
 
 const SubmissionItem = ({ submission }) => {
@@ -41,7 +42,7 @@ const SubmissionItem = ({ submission }) => {
                 </span>
               </>
             ) : (
-              <a href={`/submission/${submission.id}`}>{submission.title}</a>
+              <Link to={`/submission/${submission.id}`}>{submission.title}</Link>
             )}
           </span>
         </td>
@@ -57,9 +58,9 @@ const SubmissionItem = ({ submission }) => {
               {submission.votes} points
             </span>{' '}
             by{' '}
-            <span className="hnuser">
+            <Link className="hnuser" to={`/profile/${submission.author}`}>
               {submission.author ? submission.author : 'Unknown'}
-            </span>{' '}
+            </Link>{' '}
             <span className="age" title={submission.created_at}>
               {formatDate(submission.created_at)} ago
             </span>{' '}

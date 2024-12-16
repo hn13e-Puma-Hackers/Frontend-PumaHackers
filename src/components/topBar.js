@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TopBar = () => {
   const user = {
     username: 'xavier',
-    karma: 150, // Puedes cambiar esto según lo que necesite mostrar
+    karma: 150, // Cambia esto si necesitas más personalización
   };
 
   return (
@@ -23,11 +24,13 @@ const TopBar = () => {
             <td>
               <span>
                 <b>
-                  <a href="/">Puma Hacker News</a>
+                  <Link to="/">Puma Hacker News</Link>
                 </b>
-                <a href="/new">new</a> | <a href={`/threads/${user.username}`}>threads</a> |{' '}
-                <a href="/comments">comments</a> | <a href="/ask">ask</a> | <a href="/submit">submit</a> |{' '}
-                <a href={`/favorites/${user.username}`}>favorites</a>
+                <Link to="/new">new</Link> |{' '}
+                <Link to={`/threads/${user.username}`}>threads</Link> |{' '}
+                <Link to="/comments">comments</Link> | <Link to="/ask">ask</Link> |{' '}
+                <Link to="/submit">submit</Link> |{' '}
+                <Link to={`/favorites/${user.username}`}>favorites</Link>
                 <form action="/search" method="GET" style={{ display: 'inline' }}>
                   <input type="text" name="query" placeholder="Search" required />
                   <button type="submit">Search</button>
@@ -35,7 +38,10 @@ const TopBar = () => {
               </span>
             </td>
             <td style={{ textAlign: 'right', paddingRight: '4px' }}>
-              <a href={`/profile/${user.username}`}>{user.username}</a> (<span>{user.karma}</span>)
+              <Link to={`/profile/${user.username}`}>
+                {user.username}
+              </Link>{' '}
+              (<span>{user.karma}</span>)
             </td>
           </tr>
         </tbody>

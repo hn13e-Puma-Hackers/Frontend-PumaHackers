@@ -1,12 +1,16 @@
-// src/App.js
 import React from 'react';
-import MainPage from './views/submissionsList'; // Ajusta la ruta si el archivo está en otro directorio
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainPage from './views/submissionsList';
+import UserProfile from './views/userProfile';
 
 function App() {
   return (
-    <div>
-      <MainPage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/profile/:username" element={<UserProfile />} />
+      </Routes>
+    </Router>
   );
 }
 
