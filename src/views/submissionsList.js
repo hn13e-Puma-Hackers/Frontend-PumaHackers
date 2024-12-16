@@ -22,16 +22,47 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#f6f6ef', padding: '10px' }}>
-      <TopBar />
-      <table style={{ width: '85%', margin: '0 auto' }}>
-        <tbody>
-          {submissions.map((submission) => (
-            <SubmissionItem key={submission.id} submission={submission} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <html lang="en">
+      <head>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/css/news.css" // Asegúrate de configurar correctamente el servidor para servir archivos estáticos
+        />
+        <title>Submission List</title>
+        <link rel="icon" href="/static/img/pumaphoto.jpeg" type="image/jpeg" />
+      </head>
+      <body>
+      <center>
+        <table width="85%" bgcolor="#f6f6ef">
+          <tbody>
+          {/* TopBar */}
+          <tr>
+            <td colSpan="3">
+              <TopBar />
+            </td>
+          </tr>
+
+          {/* Spacer */}
+          <tr id="pagespace" title="" style={{ height: '10px' }}></tr>
+
+          {/* Submission Items */}
+          <tr>
+            <td>
+              <table border="0" cellPadding="0" cellSpacing="0">
+                <tbody>
+                {submissions.map((submission, index) => (
+                    <SubmissionItem key={submission.id} submission={submission} rank={index+1}/>
+                ))}
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </center>
+      </body>
+      </html>
   );
 };
 
