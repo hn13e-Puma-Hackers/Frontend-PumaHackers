@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './submissionItem.css';
+import {ApiKeyContext} from "../context/ApiKeyContext";
 
 const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, onFavorite, onUnfavorite, onDelete }) => {
     // Formateo de la fecha
@@ -7,6 +8,7 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
         const date = new Date(dateString);
         return date.toLocaleString(); // Formato legible
     };
+    const { apiKey, username } = useContext(ApiKeyContext);
     const user = {
         isAuthenticated: true, // Cambia según el estado de autenticación
         username: 'anyer',

@@ -4,9 +4,9 @@ import SubmissionItem from '../components/submissionItem';
 import axios from 'axios';
 
 const MainPage = () => {
-  const { apiKey } = useContext(ApiKeyContext); // Obtiene la API key del contexto
+  const { apiKey, username } = useContext(ApiKeyContext); // Obtiene la API key del contexto
   console.log('API Keyyy:', apiKey); // Este log se ejecuta cada vez que se renderiza
-
+  console.log('user: ', username);
   const [submissions, setSubmissions] = useState([]);
 
   useEffect(() => {

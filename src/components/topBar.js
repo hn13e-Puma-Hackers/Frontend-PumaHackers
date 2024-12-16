@@ -3,11 +3,7 @@ import { ApiKeyContext } from '../context/ApiKeyContext';
 import pumaphoto from './pumaphoto.jpeg';
 
 const TopBar = () => {
-  const { setApiKey } = useContext(ApiKeyContext); // Accede al setter del contexto
-  const [selectedUser, setSelectedUser] = useState(() => {
-    // Intenta recuperar el usuario seleccionado desde localStorage
-    return localStorage.getItem('selectedUser') || 'xavier';
-  });
+  const { setApiKey, setUsername } = useContext(ApiKeyContext); // Accede al setter del contexto
 
   // Usuarios y sus API keys hardcodeadas
   const users = {
@@ -43,20 +39,25 @@ const TopBar = () => {
     },
   };
 
-  // Usuario seleccionado
+  // Estado inicial de selectedUser desde localStorage o valor por defecto
+  const [selectedUser, setSelectedUser] = useState(() => {
+    return localStorage.getItem('selectedUser') || 'xavier';
+  });
+
   const currentUser = users[selectedUser];
+  useEffect(() => {
+    // Actualiza la API key y el username en el contexto global
+    setApiKey(currentUser.apiKey);
+    setUsername(currentUser.username);
+
+    // Guarda el usuario seleccionado en localStorage
+    localStorage.setItem('selectedUser', selectedUser);
+  }, [selectedUser, setApiKey, setUsername]);
 
   const handleUserChange = (event) => {
     const newUser = event.target.value;
     setSelectedUser(newUser);
-    setApiKey(users[newUser].apiKey); // Actualiza la API key global
-    localStorage.setItem('selectedUser', newUser); // Guarda el usuario seleccionado en localStorage
   };
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem('selectedUser') || 'xavier';
-    setApiKey(users[savedUser].apiKey);
-  }, [setApiKey]);
 
   return (
       <div>
