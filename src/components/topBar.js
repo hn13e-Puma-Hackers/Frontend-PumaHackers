@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 import pumaphoto from './pumaphoto.jpeg';
 
@@ -94,7 +95,7 @@ const TopBar = () => {
                   >
                     threads
                   </a>{' '}
-                  | <a href="/comments" rel="nofollow">comments</a> |{' '}
+                  | <Link to="/comments" rel="nofollow">comments</Link> |{' '}
                   <a href="/ask" rel="nofollow">ask</a> |{' '}
                   <a href="/submit" rel="nofollow">submit</a> |{' '}
                   {currentUser.isAuthenticated && (

@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import { Link } from 'react-router-dom';
 import './submissionItem.css';
 import {ApiKeyContext} from "../context/ApiKeyContext";
 
@@ -159,9 +160,9 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                   </>
               )}
               {/* Comments */}
-              <a href={`/submission/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
-              {submission.comments_count} comments
-            </a>{' '}
+              <Link to={`/submissions/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
+                            {submission.comments_count} comments
+                        </Link>{' '}
               | {' '}
               {/* Favorite/Unfavorite */}
               <button

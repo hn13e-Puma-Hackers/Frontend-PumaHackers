@@ -5,12 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Dev push">
-      <change beforePath="$PROJECT_DIR$/src/views/submissionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissionsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.49faa5e3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.49faa5e3.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/submissionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submissionItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -28,22 +47,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\anyer\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;f__SubmissionDetail__216&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anyer/Documents/ASW/FrontendPumaHackers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\andre\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -63,6 +82,8 @@
       <workItem from="1734283121556" duration="2601000" />
       <workItem from="1734354915438" duration="63000" />
       <workItem from="1734354995342" duration="3185000" />
+      <workItem from="1734382599895" duration="2810000" />
+      <workItem from="1734471125902" duration="4306000" />
     </task>
     <task id="LOCAL-00001" summary="Dev push">
       <option name="closed" value="true" />
