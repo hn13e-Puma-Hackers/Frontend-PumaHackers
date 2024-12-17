@@ -8,11 +8,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
     return (
         <ApiKeyProvider>
-            <div>
-                <TopBar />
-                <MainPage />
-                <Route path="/profile/:username" element={<UserProfile />} />
-            </div>
+            <Router>
+                <div>
+                    {/* La barra superior siempre estará visible */}
+                    <TopBar />
+
+                    {/* Definimos las rutas */}
+                    <Routes>
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/profile/:username" element={<UserProfile />} />
+                    </Routes>
+                </div>
+            </Router>
         </ApiKeyProvider>
     );
 }

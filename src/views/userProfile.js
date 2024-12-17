@@ -92,25 +92,13 @@ const UserProfile = () => {
   }
 
   return (
-
-    <html lang="en">
-      <head>
-      <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/css/news.css" // Asegúrate de configurar correctamente el servidor para servir archivos estáticos
-        />
-        <title>User Profile</title>
-        <link rel="icon" href="/static/img/pumaphoto.jpeg" type="image/jpeg" />
-      </head>
-      <body>
+    <>
       {/* Barra de navegación superior */}
       <center>
         <table width="85%" bgcolor="#f6f6ef">
           <tbody>
             <tr>
               <td colSpan="3">
-                <TopBar />
               </td>
             </tr>
           </tbody>
@@ -255,9 +243,7 @@ const UserProfile = () => {
           )}
         </form>
       </div>
-      </body>
-      </html>
-
+    </>
   );
 };
 
