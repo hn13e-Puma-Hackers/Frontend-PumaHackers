@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Task #244: View ask submissions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissionsList.js" afterDir="false" />
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="merge">
+      <change beforePath="$PROJECT_DIR$/src/components/commentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +42,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "f__view__new__submissions__243",
+    "git-widget-placeholder": "f__FuncionsCommentItem__246",
     "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,7 +50,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\anyer\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\andre\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -123,7 +117,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734543550532</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="favrite/unfavorite voted/unvoted">
+      <option name="closed" value="true" />
+      <created>1734555265593</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555265593</updated>
+    </task>
+    <task id="LOCAL-00007" summary="merge">
+      <option name="closed" value="true" />
+      <created>1734555512508</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555512508</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +156,8 @@
     <MESSAGE value="Avenços en comments" />
     <MESSAGE value="Task #240: Search submission logic" />
     <MESSAGE value="Task #244: View ask submissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task #244: View ask submissions" />
+    <MESSAGE value="favrite/unfavorite voted/unvoted" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>

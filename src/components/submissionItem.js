@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
-import api from '../api';
+import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
+import api from "../api";
 
 const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
@@ -24,7 +25,8 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
     const handleActionPatch = async (submissionId, url) => {
         try {
             const response = await api.patch(
-                `api/submissions/${submissionId}/${url}/`,
+                `/api/submissions/${submissionId}/${url}/`,
+                {},
                 {
                     headers: {
                         'Authorization': apiKey,
