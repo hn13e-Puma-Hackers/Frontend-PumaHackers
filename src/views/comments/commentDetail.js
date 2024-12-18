@@ -71,8 +71,8 @@ const CommentDetail = () => {
     }
   };
 
-  const handleDeleteRedirect = (submissionId) => {
-    navigate(`/submissions/${submissionId}`);
+  const handleDeleteRedirect = () => {
+    navigate('/comments');
   };
 
   if (!comment) {
@@ -94,7 +94,7 @@ const CommentDetail = () => {
                         comment={comment}
                         onVote={handleVote}
                         onUnvote={handleUnvote}
-                        onDeleteRedirect={handleDeleteRedirect}
+                        onDelete={handleDeleteRedirect}
                       />
                     </td>
                   </tr>

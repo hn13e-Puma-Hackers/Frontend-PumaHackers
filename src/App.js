@@ -42,6 +42,10 @@ function App() {
                         <Route path={"/new"} element={<NewSubmissions />} />
                         <Route path={"submissions/add"} element={<CreateSubmission />} />
                         <Route path="/comment/edit/:id" element={<EditComment />} />
+                        <Route path="/ask" element={<AskSubmissions />} />
+                        <Route path="/new" element={<NewSubmissions />} />
+                        <Route path="submissions/add" element={<CreateSubmission />} />
+                        <Route path="/submission/edit/:id" element={<CreateSubmission />} />
                     </Routes>
                 </div>
             </Router>

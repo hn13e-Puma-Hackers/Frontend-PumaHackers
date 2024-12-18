@@ -139,29 +139,43 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDe
                   </button>
                 </>
               )}
-              {username && (
-                <>{' '}
-                  | {' '}
-                  {favorited ? (
-                    <button
-                      type="button"
-                      style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                      onClick={() => handleActionPatch(comment.id, 'unfavorite')}
-                      className="delete-link"
-                    >
-                      un-favorite
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                      onClick={() => handleActionPatch(comment.id, 'favorite')}
-                      className="delete-link"
-                    >
-                      favorite
-                    </button>
-                  )}
-                </>
+              {apiKey !== "" && username && (
+                  <>
+                    {' '}|{' '}
+                    {favorited ? (
+                        <button
+                            type="button"
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              padding: 0,
+                              color: 'gray',
+                              cursor: 'pointer',
+                              fontSize: 'inherit',
+                            }}
+                            onClick={() => handleActionPatch(comment.id, 'unfavorite')}
+                            className="delete-link"
+                        >
+                          un-favorite
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              padding: 0,
+                              color: 'gray',
+                              cursor: 'pointer',
+                              fontSize: 'inherit',
+                            }}
+                            onClick={() => handleActionPatch(comment.id, 'favorite')}
+                            className="delete-link"
+                        >
+                          favorite
+                        </button>
+                    )}
+                  </>
               )}
               {username && comment.author === username && (
               <>{' '} | {' '}

@@ -84,26 +84,37 @@ const SubmissionDetail = () => {
 
   const renderComments = (comments) => {
     return comments.map((comment) => (
-      <div key={comment.id} style={{ marginLeft: comment.parent_comment ? '20px' : '0px' }}>
-        <CommentItem
-          comment={comment}
-          onVote={() => {}}
-          onUnvote={() => {}}
-          onFavorite={() => {}}
-          onUnfavorite={() => {}}
-          onDelete={handleDeleteComment}
-        />
-        <Link to={`/comment/${comment.id}`} style={{ marginLeft: '25px', cursor: 'pointer', textDecoration: 'underline', color: '#5a5a5a', fontSize: '10px' }}>
-          reply
-        </Link>
-        <br/>
-        <br/>
-        {comment.replies && comment.replies.length > 0 && (
-          <div style={{ marginLeft: '20px' }}>
-            {renderComments(comment.replies)}
-          </div>
-        )}
-      </div>
+        <div key={comment.id} style={{ marginLeft: comment.parent_comment ? '20px' : '0px' }}>
+          <CommentItem
+              comment={comment}
+              onVote={() => {}}
+              onUnvote={() => {}}
+              onFavorite={() => {}}
+              onUnfavorite={() => {}}
+              onDelete={handleDeleteComment}
+          />
+          {apiKey !== "" && (
+              <Link
+                  to={`/comment/${comment.id}`}
+                  style={{
+                    marginLeft: '25px',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
+                    color: '#5a5a5a',
+                    fontSize: '10px',
+                  }}
+              >
+                reply
+              </Link>
+          )}
+          <br/>
+          <br/>
+          {comment.replies && comment.replies.length > 0 && (
+              <div style={{ marginLeft: '20px' }}>
+                {renderComments(comment.replies)}
+              </div>
+          )}
+        </div>
     ));
   };
 
@@ -126,7 +137,7 @@ const SubmissionDetail = () => {
                       <span className="titleline">
                         <SubmissionItem
                           submission={submission}
-                          rank={null} // Puedes ajustar el rank según sea necesario
+                          rank={null} // Puedes ajustar el rank según sea necesario // Puedes ajustar el rank según sea necesario
                           onVote={() => {}}
                           onUnvote={() => {}}
                           onHide={() => {}}
@@ -150,8 +161,11 @@ const SubmissionDetail = () => {
                           style={{marginLeft: '32px'}} // Ajusta el valor según sea necesario
                         />
                         <br/>
-                        <button type="submit" style={{marginLeft: '32px'}}>add comment</button>
+                        {apiKey !== "" && (
+                            <button type="submit" style={{marginLeft: '32px'}}>add comment</button>
+                        )}
                       </form>
+
                     </td>
                   </tr>
                   <tr>
