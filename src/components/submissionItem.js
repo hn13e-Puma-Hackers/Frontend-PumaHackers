@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
-import axios from 'axios';
+import api from '../api';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 
 const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
@@ -23,12 +23,11 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleActionPatch = async (submissionId, url) => {
         try {
-            const response = await axios.patch(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/${url}/`,
-                {},
+            const response = await api.patch(
+                `api/submissions/${submissionId}/${url}/`,
                 {
                     headers: {
-                        Authorization: apiKey,
+                        'Authorization': apiKey,
                     },
                 }
             );
@@ -59,15 +58,13 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleDelete = async (submissionId) => {
         try {
-            const response = await axios.delete(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/`,
-                {},
-                {
-                    headers: {
-                        Authorization: apiKey,
-                    },
-                }
-            );
+            const response = await api.delete(`api/submissions/${submissionId}/`, {
+                headers: {
+                    'Authorization': apiKey, // Usa la API key en los headers
+                },
+            });
+            setHidden(true);
+            onHide(submissionId);
             console.log('Delete exitoso:', response.data);
         } catch (error) {
             console.error('Error al hacer delete:', error);
