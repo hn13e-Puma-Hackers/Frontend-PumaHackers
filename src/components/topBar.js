@@ -44,6 +44,12 @@ const TopBar = () => {
       karma: 120,
       isAuthenticated: true,
     },
+    broly: {
+      apiKey: 'xd5LoILA.lw47bHt77RbYKkD5o2VekXYidjGZ61AP',
+      username: 'broly',
+      karma: 120,
+      isAuthenticated: true,
+    },
   };
 
   // Estado inicial de selectedUser desde localStorage o valor por defecto
