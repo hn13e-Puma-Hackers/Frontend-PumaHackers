@@ -74,7 +74,7 @@ const TopBar = () => {
                   <a href={currentUser.isAuthenticated ? `/threads/${currentUser.username}` : '#'} rel="nofollow">threads</a>{' '}
                   | <Link to="/comments" rel="nofollow">comments</Link> |{' '}
                   <Link to="/ask" rel="nofollow">ask</Link> |{' '}
-                  <a href="/submit" rel="nofollow">submit</a> |{' '}
+                  <Link to="/submissions/add" rel="nofollow">submit</Link> |{' '}
                   {currentUser.isAuthenticated && (
                       <Link to={`/${currentUser.username}/favorite_submissions`}>favorite</Link>
                   )}{' '}
