@@ -12,6 +12,7 @@ import UserSubmissions from "./views/submissions/userSubmissions";
 import UserFavoriteSubmissions from "./views/submissions/userFavoriteSubmissions";
 import UserHiddenSubmissions from "./views/submissions/userHiddenSubmissions";
 import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // Import the Submissions component
+import SearchResults from "./views/submissions/SearchResults";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/:username/favorite_submissions" element={<UserFavoriteSubmissions />} />
                         <Route path="/:username/hidden_submissions" element={<UserHiddenSubmissions />} />
                         <Route path="/:username/voted_submissions" element={<UserVotedSubmissions />} />
+                        <Route path="search_submissions" element={<SearchResults />} />
                     </Routes>
                 </div>
             </Router>
