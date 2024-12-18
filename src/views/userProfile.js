@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api';
 import TopBar from '../components/topBar';
+import {ApiKeyContext} from "../context/ApiKeyContext";
 
 const UserProfile = () => {
+  const { apiKey, username: loggedInUser } = useContext(ApiKeyContext);
   const { username } = useParams();
   const [profile, setProfile] = useState(null);
   const [isOwnProfile, setIsOwnProfile] = useState(false);
@@ -13,11 +15,12 @@ const UserProfile = () => {
     banner: null,
     avatar: null,
   });
+  useEffect(() => {
+    if (apiKey && loggedInUser) {
+      fetchProfile();
+    }
+  }, [apiKey, loggedInUser, username]);
 
-  const apiKey = 'iVXP3qQs.7l7mUTavytTWOWDMVPLHLzkCL8VMCtsh'; // Tu API Key
-  const loggedInUser = 'broly369'; // Cambiar por lógica dinámica si es necesario
-
-  // Función para cargar el perfil desde la API
   const fetchProfile = async () => {
     try {
       const response = await api.get(`/api/profile/${username}/`, {
@@ -29,7 +32,6 @@ const UserProfile = () => {
 
       // Determinar si es el perfil propio
       setIsOwnProfile(username === loggedInUser);
-
       // Inicializar valores en el formulario
       setFormData({
         about: response.data.about || '',
