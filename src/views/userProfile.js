@@ -220,7 +220,7 @@ const UserProfile = () => {
               <Link to={`/profile/${profile.username}/comments`}> Comments</Link>
             </div>
             <div>
-            <Link to={`/profile/${profile.username}/favorite-submissions`}>Favorite Submissions</Link> |
+            <Link to={`/${profile.username}/favorite_submissions`}>Favorite Submissions</Link> |
               <Link to={`/profile/${profile.username}/favorite-comments`}> Favorite Comments</Link>
             </div>
             {isOwnProfile && (

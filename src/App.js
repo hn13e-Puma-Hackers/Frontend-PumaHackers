@@ -8,7 +8,8 @@ import SubmissionDetail from './views/submissions/submissionDetail';
 import AllComments from './views/comments/allComments';
 import './components/submissionItem.css';
 import CommentDetail from "./views/comments/commentDetail";
-import UserSubmissions from "./views/submissions/userSubmissions"; // Import the Submissions component
+import UserSubmissions from "./views/submissions/userSubmissions";
+import UserFavoriteSubmissions from "./views/submissions/userFavoriteSubmissions"; // Import the Submissions component
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/comments" element={<AllComments />} />
                         <Route path="/comment/:id" element={<CommentDetail />} />
                         <Route path="/:username/submissions" element={<UserSubmissions />} />
+                        <Route path="/:username/favorite_submissions" element={<UserFavoriteSubmissions />} />
                     </Routes>
                 </div>
             </Router>
