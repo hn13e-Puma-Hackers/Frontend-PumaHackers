@@ -195,12 +195,12 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                         {/* Edit/Delete */}
                             {username === submission.author && (
                             <>
-                                <a
-                                    href={`/submission/edit/${submission.id}`}
+                                <Link
+                                    to={`/submission/edit/${submission.id}`}
                                     style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
                                 >
                                     edit
-                                </a>{' '}
+                                </Link>{' '}
                                 |{' '}
                                 <button
                                     style={{
