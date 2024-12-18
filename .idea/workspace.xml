@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="merge">
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="parent comment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/commentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734555512508</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="parent comment">
+      <option name="closed" value="true" />
+      <created>1734555644547</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555644547</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +167,7 @@
     <MESSAGE value="Task #244: View ask submissions" />
     <MESSAGE value="favrite/unfavorite voted/unvoted" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+    <MESSAGE value="parent comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="parent comment" />
   </component>
 </project>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 import api from "../api";
 
-const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) => {
+const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDelete }) => {
   const { apiKey, username } = useContext(ApiKeyContext);
   const [submission, setSubmission] = useState(null);
   const [voted, setVoted] = useState(comment.voted);
@@ -54,6 +54,20 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
       }
     } catch (error) {
       console.error(`Error performing action ${url}:`, error);
+    }
+  };
+
+  const handleDelete = async (commentId) => {
+    try {
+      const response = await api.delete(`/api/comments/${commentId}/`, {
+        headers: {
+          Authorization: apiKey,
+        },
+      });
+      console.log('Delete successful:', response.data);
+      onDelete(commentId);
+    } catch (error) {
+      console.error('Error deleting comment:', error);
     }
   };
 
@@ -140,6 +154,17 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
                   )}
                 </>
               )}
+              {username && comment.author === username && (
+              <>{' '} | {' '}
+                <button
+                  type="button"
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
+                  onClick={() => handleDelete(comment.id)}
+                >
+                  delete
+                </button>
+              </>
+                )}
               <span className="navs">
                 {' '} | {' '}
                 <Link to={comment.parent_comment ? `/comment/${comment.parent_comment}` : `/submissions/${comment.submission}`}>

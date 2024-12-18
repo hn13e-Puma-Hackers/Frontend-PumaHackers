@@ -24,6 +24,10 @@ const AllComments = () => {
     fetchComments();
   }, [apiKey]);
 
+  const handleDeleteComment = (commentId) => {
+    setComments(comments.filter(comment => comment.id !== commentId));
+  };
+
   return (
     <center>
       <table width="85%" bgcolor="#f6f6ef">
@@ -44,6 +48,7 @@ const AllComments = () => {
                       onUnvote={() => {}}
                       onFavorite={() => {}}
                       onUnfavorite={() => {}}
+                      onDelete={handleDeleteComment}
                     />
                   ))}
                 </tbody>
