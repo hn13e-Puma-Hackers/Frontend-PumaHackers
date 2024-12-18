@@ -14,8 +14,8 @@ const UserProfile = () => {
     avatar: null,
   });
 
-  const apiKey = 'u3o5nyf6.IElFeLGqYUHZpdf8jPMoT9HcHFbvv0YN'; // Tu API Key
-  const loggedInUser = 'xavier'; // Cambiar por lógica dinámica si es necesario
+  const apiKey = 'iVXP3qQs.7l7mUTavytTWOWDMVPLHLzkCL8VMCtsh'; // Tu API Key
+  const loggedInUser = 'broly369'; // Cambiar por lógica dinámica si es necesario
 
   // Función para cargar el perfil desde la API
   const fetchProfile = async () => {
@@ -226,7 +226,7 @@ const UserProfile = () => {
             {isOwnProfile && (
               <>
                 {' '}
-                | <Link to={`/profile/${profile.username}/hidden-submissions`}> Hidden Submissions</Link> |
+                | <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
                 <Link to={`/profile/${profile.username}/voted-submissions`}> Voted Submissions</Link> |
                 <Link to={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</Link> |
                 <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
