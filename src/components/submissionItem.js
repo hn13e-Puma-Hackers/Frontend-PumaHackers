@@ -1,11 +1,16 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
 import axios from 'axios';
-import {ApiKeyContext} from "../context/ApiKeyContext";
+import { ApiKeyContext } from '../context/ApiKeyContext';
 
 const SubmissionItem = ({ submission, rank }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
+    const [favorited, setFavorited] = useState(submission.favorited);
+
+    useEffect(() => {
+        setFavorited(submission.favorited);
+    }, [submission.favorited]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -25,6 +30,12 @@ const SubmissionItem = ({ submission, rank }) => {
             );
             console.log(`${url} exitoso:`, response.data);
 
+            // Actualiza el estado local si la acción es de favorite/unfavorite
+            if (url === 'favorite') {
+                setFavorited(true);
+            } else if (url === 'unfavorite') {
+                setFavorited(false);
+            }
         } catch (error) {
             console.error(`Error al realizar la acción ${url}:`, error);
         }
@@ -42,7 +53,6 @@ const SubmissionItem = ({ submission, rank }) => {
                 }
             );
             console.log('Delete exitoso:', response.data);
-
         } catch (error) {
             console.error('Error al hacer delete:', error);
         }
@@ -74,23 +84,23 @@ const SubmissionItem = ({ submission, rank }) => {
                     </center>
                 </td>
                 <td className="title">
-          <span className="titleline">
-            {submission.url ? (
-                <>
-                    <a href={submission.url} target="_blank" rel="noopener noreferrer">
-                        {submission.title}
-                    </a>
-                    <span className="sitebit comhead">
-                  {' '}
-                        (<a href={submission.url}>
-                    <span className="sitestr">{submission.url}</span>
-                  </a>)
-                </span>
-                </>
-            ) : (
-                <a href={`/submission/${submission.id}`}>{submission.title}</a>
-            )}
-          </span>
+                    <span className="titleline">
+                        {submission.url ? (
+                            <>
+                                <a href={submission.url} target="_blank" rel="noopener noreferrer">
+                                    {submission.title}
+                                </a>
+                                <span className="sitebit comhead">
+                                    {' '}
+                                    (<a href={submission.url}>
+                                        <span className="sitestr">{submission.url}</span>
+                                    </a>)
+                                </span>
+                            </>
+                        ) : (
+                            <a href={`/submission/${submission.id}`}>{submission.title}</a>
+                        )}
+                    </span>
                 </td>
             </tr>
 
@@ -98,123 +108,131 @@ const SubmissionItem = ({ submission, rank }) => {
             <tr>
                 <td colSpan="2"></td>
                 <td className="subtext">
-          <span className="subline">
-            {/* Número de votos */}
-              <span className="score" id={`score_${submission.id}`}>
-              {submission.votes} points
-            </span>{' '}
-              by{' '}
-              {submission.author ? (
-                  <a href={`/profile/${submission.author}`}>
-                      <span className="hnuser">{submission.author}</span>
-                  </a>
-              ) : (
-                  <span className="hnuser">Unknown</span>
-              )}{' '}
-              <span className="age" title={submission.created_at}>
-              {formatDate(submission.created_at)} ago
-            </span>{' '}
-              |{' '}
-              {/* Unvote */}
-              {submission.voted && username !== submission.author && (
-                  <>
-                      <button
-                          className="unvotetext"
-                          style={{
-                              background: 'none',
-                              border: 'none',
-                              padding: 0,
-                              color: 'gray',
-                              cursor: 'pointer',
-                              fontSize: 'inherit',
-                          }}
-                          onClick={() => handleActionPatch(submission.id,'unvote')}
-                      >
-                          unvote
-                      </button>{' '}
-                      | {' '}
-                  </>
-              )}
-              {/* Hide/Unhide */}
-              {submission.hidden ? (
-                  <button
-                      className="hide-link"
-                      style={{
-                          background: 'none',
-                          border: 'none',
-                          padding: 0,
-                          color: 'gray',
-                          cursor: 'pointer',
-                          fontSize: 'inherit',
-                      }}
-                      onClick={() => handleActionPatch(submission.id,'unhide')}
-                  >
-                      un-hide
-                  </button>
-              ) : (
-                  <button
-                      className="hide-link"
-                      style={{
-                          background: 'none',
-                          border: 'none',
-                          padding: 0,
-                          color: 'gray',
-                          cursor: 'pointer',
-                          fontSize: 'inherit',
-                      }}
-                      onClick={() => handleActionPatch(submission.id,'hide')}
-                  >
-                      hide
-                  </button>
-              )}{' '}
-              | {' '}
-              {/* Edit/Delete */}
-              {username === submission.author && (
-                  <>
-                      <a href={`/submission/edit/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
-                          edit
-                      </a>{' '}
-                      | {' '}
-                      <button
-                          style={{
-                              background: 'none',
-                              border: 'none',
-                              padding: 0,
-                              color: 'gray',
-                              cursor: 'pointer',
-                              fontSize: 'inherit',
-                          }}
-                          className="delete-link"
-                          onClick={() => handleDelete(submission.id)}
-                      >
-                          delete
-                      </button>{' '}
-                      |{' '}
-                  </>
-              )}
-              {/* Comments */}
-              <Link to={`/submissions/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
+                    <span className="subline">
+                        {/* Número de votos */}
+                        <span className="score" id={`score_${submission.id}`}>
+                            {submission.votes} points
+                        </span>{' '}
+                        by{' '}
+                        {submission.author ? (
+                            <a href={`/profile/${submission.author}`}>
+                                <span className="hnuser">{submission.author}</span>
+                            </a>
+                        ) : (
+                            <span className="hnuser">Unknown</span>
+                        )}{' '}
+                        <span className="age" title={submission.created_at}>
+                            {formatDate(submission.created_at)} ago
+                        </span>{' '}
+                        |{' '}
+                        {/* Unvote */}
+                        {submission.voted && username !== submission.author && (
+                            <>
+                                <button
+                                    className="unvotetext"
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        padding: 0,
+                                        color: 'gray',
+                                        cursor: 'pointer',
+                                        fontSize: 'inherit',
+                                    }}
+                                    onClick={() => handleActionPatch(submission.id, 'unvote')}
+                                >
+                                    unvote
+                                </button>{' '}
+                                |{' '}
+                            </>
+                        )}
+                        {/* Hide/Unhide */}
+                        {submission.hidden ? (
+                            <button
+                                className="hide-link"
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    padding: 0,
+                                    color: 'gray',
+                                    cursor: 'pointer',
+                                    fontSize: 'inherit',
+                                }}
+                                onClick={() => handleActionPatch(submission.id, 'unhide')}
+                            >
+                                un-hide
+                            </button>
+                        ) : (
+                            <button
+                                className="hide-link"
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    padding: 0,
+                                    color: 'gray',
+                                    cursor: 'pointer',
+                                    fontSize: 'inherit',
+                                }}
+                                onClick={() => handleActionPatch(submission.id, 'hide')}
+                            >
+                                hide
+                            </button>
+                        )}{' '}
+                        |{' '}
+                        {/* Edit/Delete */}
+                        {username === submission.author && (
+                            <>
+                                <a
+                                    href={`/submission/edit/${submission.id}`}
+                                    style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
+                                >
+                                    edit
+                                </a>{' '}
+                                |{' '}
+                                <button
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        padding: 0,
+                                        color: 'gray',
+                                        cursor: 'pointer',
+                                        fontSize: 'inherit',
+                                    }}
+                                    className="delete-link"
+                                    onClick={() => handleDelete(submission.id)}
+                                >
+                                    delete
+                                </button>{' '}
+                                |{' '}
+                            </>
+                        )}
+                        {/* Comments */}
+                        <Link
+                            to={`/submissions/${submission.id}`}
+                            style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
+                        >
                             {submission.comments_count} comments
                         </Link>{' '}
-              | {' '}
-              {/* Favorite/Unfavorite */}
-              <button
-                  className="favorite-link"
-                  style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                      color: 'gray',
-                      cursor: 'pointer',
-                      fontSize: 'inherit',
-                  }}
-                  onClick={() =>
-                      submission.favorited ? handleActionPatch(submission.id,'unfavorite') : handleActionPatch(submission.id,'favorite')
-                  }
-              >
-              {submission.favorited ? 'un-favorite' : 'favorite'}
-            </button>
-          </span>
+                        |{' '}
+                        {/* Favorite/Unfavorite */}
+                        <button
+                            className="favorite-link"
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                padding: 0,
+                                color: 'gray',
+                                cursor: 'pointer',
+                                fontSize: 'inherit',
+                            }}
+                            onClick={() =>
+                                favorited
+                                    ? handleActionPatch(submission.id, 'unfavorite')
+                                    : handleActionPatch(submission.id, 'favorite')
+                            }
+                        >
+                            {favorited ? 'un-favorite' : 'favorite'}
+                        </button>
+                    </span>
                 </td>
             </tr>
 
