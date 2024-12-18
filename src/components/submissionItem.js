@@ -195,7 +195,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                         )}{' '}
                         |{' '}
                         {/* Edit/Delete */}
-                        {username === submission.author && (
+                            {username === submission.author && (
                             <>
                                 <a
                                     href={`/submission/edit/${submission.id}`}

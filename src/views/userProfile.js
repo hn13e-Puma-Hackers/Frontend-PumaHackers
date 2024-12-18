@@ -228,8 +228,8 @@ const UserProfile = () => {
             {isOwnProfile && (
               <>
                 {' '}
-                | <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
-                <Link to={`/${profile.username}/voted_submissions`}>Voted Submissions</Link> |
+                <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
+                <Link to={`/${profile.username}/voted_submissions`}> Voted Submissions</Link> |
                 <Link to={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</Link> |
                 <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
               </>
