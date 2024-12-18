@@ -4,7 +4,7 @@ import './submissionItem.css';
 import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 
-const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite }) => {
+const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
     const [voted, setVoted] = useState(submission.voted);
@@ -44,6 +44,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite }) =>
                 setVoted(true);
             } else if (url === 'unvote') {
                 setVoted(false);
+                onUnvote(submissionId); // Llama a la función onUnvote para remover la submission
             } else if (url === 'hide') {
                 setHidden(true);
                 onHide(submissionId); // Llama a la función onHide para remover la submission
