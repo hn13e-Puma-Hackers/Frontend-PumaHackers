@@ -4,7 +4,7 @@ import './submissionItem.css';
 import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 
-const SubmissionItem = ({ submission, rank }) => {
+const SubmissionItem = ({ submission, rank, onHide }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
 
@@ -35,6 +35,8 @@ const SubmissionItem = ({ submission, rank }) => {
                 setFavorited(true);
             } else if (url === 'unfavorite') {
                 setFavorited(false);
+            } else if (url === 'hide') {
+                onHide(submissionId); // Llama a la función onHide para remover la submission
             }
         } catch (error) {
             console.error(`Error al realizar la acción ${url}:`, error);
@@ -145,38 +147,21 @@ const SubmissionItem = ({ submission, rank }) => {
                                 |{' '}
                             </>
                         )}
-                        {/* Hide/Unhide */}
-                        {submission.hidden ? (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'unhide')}
-                            >
-                                un-hide
-                            </button>
-                        ) : (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'hide')}
-                            >
-                                hide
-                            </button>
-                        )}{' '}
+                        {/* Hide */}
+                        <button
+                            className="hide-link"
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                padding: 0,
+                                color: 'gray',
+                                cursor: 'pointer',
+                                fontSize: 'inherit',
+                            }}
+                            onClick={() => handleActionPatch(submission.id, 'hide')}
+                        >
+                            hide
+                        </button>{' '}
                         |{' '}
                         {/* Edit/Delete */}
                         {username === submission.author && (
