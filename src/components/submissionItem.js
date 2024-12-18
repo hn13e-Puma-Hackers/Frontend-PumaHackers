@@ -1,19 +1,53 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import './submissionItem.css';
+import axios from 'axios';
 import {ApiKeyContext} from "../context/ApiKeyContext";
 
-const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, onFavorite, onUnfavorite, onDelete }) => {
-    // Formateo de la fecha
+const SubmissionItem = ({ submission, rank }) => {
+    const { apiKey, username } = useContext(ApiKeyContext);
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleString(); // Formato legible
     };
-    const { apiKey, username } = useContext(ApiKeyContext);
-    const user = {
-        isAuthenticated: true, // Cambia según el estado de autenticación
-        username: 'anyer',
-        karma: 150,
+
+    const handleActionPatch = async (submissionId, url) => {
+        try {
+            const response = await axios.patch(
+                `http://127.0.0.1:8000/api/submissions/${submissionId}/${url}/`,
+                {},
+                {
+                    headers: {
+                        Authorization: apiKey,
+                    },
+                }
+            );
+            console.log(`${url} exitoso:`, response.data);
+
+        } catch (error) {
+            console.error(`Error al realizar la acción ${url}:`, error);
+        }
     };
+
+    const handleDelete = async (submissionId) => {
+        try {
+            const response = await axios.delete(
+                `http://127.0.0.1:8000/api/submissions/${submissionId}/`,
+                {},
+                {
+                    headers: {
+                        Authorization: apiKey,
+                    },
+                }
+            );
+            console.log('Delete exitoso:', response.data);
+
+        } catch (error) {
+            console.error('Error al hacer delete:', error);
+        }
+    };
+
     return (
         <>
             {/* Fila principal */}
@@ -23,12 +57,12 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                 </td>
                 <td valign="top" className="votelinks">
                     <center>
-                        {!submission.voted && user.username !== submission.author ? (
+                        {!submission.voted && username !== submission.author ? (
                             <button
                                 className="votearrow"
                                 title="upvote"
                                 style={{ cursor: 'pointer' }}
-                                onClick={() => onVote(submission.id)}
+                                onClick={() => handleActionPatch(submission.id, 'vote')}
                             ></button>
                         ) : (
                             <button
@@ -82,7 +116,7 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
             </span>{' '}
               |{' '}
               {/* Unvote */}
-              {submission.voted && user.username !== submission.author && (
+              {submission.voted && username !== submission.author && (
                   <>
                       <button
                           className="unvotetext"
@@ -94,11 +128,11 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                               cursor: 'pointer',
                               fontSize: 'inherit',
                           }}
-                          onClick={() => onUnvote(submission.id)}
+                          onClick={() => handleActionPatch(submission.id,'unvote')}
                       >
                           unvote
                       </button>{' '}
-                      |
+                      | {' '}
                   </>
               )}
               {/* Hide/Unhide */}
@@ -113,7 +147,7 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                           cursor: 'pointer',
                           fontSize: 'inherit',
                       }}
-                      onClick={() => onUnhide(submission.id)}
+                      onClick={() => handleActionPatch(submission.id,'unhide')}
                   >
                       un-hide
                   </button>
@@ -128,14 +162,14 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                           cursor: 'pointer',
                           fontSize: 'inherit',
                       }}
-                      onClick={() => onHide(submission.id)}
+                      onClick={() => handleActionPatch(submission.id,'hide')}
                   >
                       hide
                   </button>
               )}{' '}
               | {' '}
               {/* Edit/Delete */}
-              {user.username === submission.author && (
+              {username === submission.author && (
                   <>
                       <a href={`/submission/edit/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
                           edit
@@ -151,11 +185,11 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                               fontSize: 'inherit',
                           }}
                           className="delete-link"
-                          onClick={() => onDelete(submission.id)}
+                          onClick={() => handleDelete(submission.id)}
                       >
                           delete
                       </button>{' '}
-                      |
+                      |{' '}
                   </>
               )}
               {/* Comments */}
@@ -175,7 +209,7 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
                       fontSize: 'inherit',
                   }}
                   onClick={() =>
-                      submission.favorited ? onUnfavorite(submission.id) : onFavorite(submission.id)
+                      submission.favorited ? handleActionPatch(submission.id,'unfavorite') : handleActionPatch(submission.id,'favorite')
                   }
               >
               {submission.favorited ? 'un-favorite' : 'favorite'}
