@@ -142,7 +142,7 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
               )}
               <span className="navs">
                 {' '} | {' '}
-                <Link to={comment.parent_comment ? `/comment/${comment.parent_comment.id}` : `/submission/${comment.submission}`}>
+                <Link to={comment.parent_comment ? `/comment/${comment.parent_comment}` : `/submissions/${comment.submission}`}>
                   parent
                 </Link>
                 {submission && (
