@@ -10,6 +10,7 @@ import './components/submissionItem.css';
 import CommentDetail from "./views/comments/commentDetail";
 import UserSubmissions from "./views/submissions/userSubmissions";
 import UserFavoriteSubmissions from "./views/submissions/userFavoriteSubmissions";
+import UserFavoriteComments from "./views/comments/userFavoriteComments";
 import UserHiddenSubmissions from "./views/submissions/userHiddenSubmissions";
 import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // Import the Submissions component
 import SearchResults from "./views/submissions/SearchResults";
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/comment/:id" element={<CommentDetail />} />
                         <Route path="/:username/submissions" element={<UserSubmissions />} />
                         <Route path="/:username/favorite_submissions" element={<UserFavoriteSubmissions />} />
+                        <Route path="/:username/favorite_comments" element={<UserFavoriteComments />} />
                         <Route path="/:username/hidden_submissions" element={<UserHiddenSubmissions />} />
                         <Route path="/:username/voted_submissions" element={<UserVotedSubmissions />} />
                         <Route path="search_submissions" element={<SearchResults />} />
