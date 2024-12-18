@@ -90,24 +90,37 @@ const UserProfile = () => {
   };
 
   if (!profile) {
-    return <div>Loading...</div>;
+    return <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          textAlign: 'center',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          color: '#ff6600',
+        }}
+    >
+      Usuari no loguejat!!!
+    </div>;
   }
 
   return (
-    <>
-      {/* Barra de navegación superior */}
-      <center>
-        <table width="85%" bgcolor="#f6f6ef">
-          <tbody>
+      <>
+        {/* Barra de navegación superior */}
+        <center>
+          <table width="85%" bgcolor="#f6f6ef">
+            <tbody>
             <tr>
               <td colSpan="3">
               </td>
             </tr>
-          </tbody>
-        </table>
-      </center>
+            </tbody>
+          </table>
+        </center>
 
-      {/* Pantalla de perfil de usuario */}
+        {/* Pantalla de perfil de usuario */}
       <div className="profile-container" style={{ width: '85%', margin: '0 auto', textAlign: 'left' }}>
         <form onSubmit={handleUpdate} encType="multipart/form-data">
           {/* Mostrar el banner */}
@@ -230,7 +243,6 @@ const UserProfile = () => {
                 {' '}
                 <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
                 <Link to={`/${profile.username}/voted_submissions`}> Voted Submissions</Link> |
-                <Link to={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</Link> |
                 <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
               </>
             )}
