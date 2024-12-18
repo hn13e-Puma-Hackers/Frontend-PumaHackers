@@ -28,6 +28,10 @@ const MainPage = () => {
     fetchSubmissions();
   }, [apiKey]); // Incluye apiKey como dependencia
 
+  const handleHide = (submissionId) => {
+      setSubmissions(submissions.filter(sub => sub.id !== submissionId));
+  };
+
   return (
       <center>
         <table width="85%" bgcolor="#f6f6ef">
@@ -41,7 +45,7 @@ const MainPage = () => {
               <table border="0" cellPadding="0" cellSpacing="0">
                 <tbody>
                 {submissions.map((submission, index) => (
-                    <SubmissionItem key={submission.id} submission={submission} rank={index + 1} />
+                    <SubmissionItem key={submission.id} submission={submission} rank={index + 1} onHide={handleHide}/>
                 ))}
                 </tbody>
               </table>
