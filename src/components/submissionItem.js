@@ -7,10 +7,12 @@ import { ApiKeyContext } from '../context/ApiKeyContext';
 const SubmissionItem = ({ submission, rank, onHide }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
+    const [voted, setVoted] = useState(submission.voted);
 
     useEffect(() => {
         setFavorited(submission.favorited);
-    }, [submission.favorited]);
+        setVoted(submission.voted);
+    }, [submission.favorited, submission.voted]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -30,11 +32,15 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
             );
             console.log(`${url} exitoso:`, response.data);
 
-            // Actualiza el estado local si la acción es de favorite/unfavorite
+            // Actualiza el estado local si la acción es de favorite/unfavorite o vote/unvote
             if (url === 'favorite') {
                 setFavorited(true);
             } else if (url === 'unfavorite') {
                 setFavorited(false);
+            } else if (url === 'vote') {
+                setVoted(true);
+            } else if (url === 'unvote') {
+                setVoted(false);
             } else if (url === 'hide') {
                 onHide(submissionId); // Llama a la función onHide para remover la submission
             }
@@ -69,7 +75,7 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
                 </td>
                 <td valign="top" className="votelinks">
                     <center>
-                        {!submission.voted && username !== submission.author ? (
+                        {!voted && username !== submission.author ? (
                             <button
                                 className="votearrow"
                                 title="upvote"
@@ -128,7 +134,7 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
                         </span>{' '}
                         |{' '}
                         {/* Unvote */}
-                        {submission.voted && username !== submission.author && (
+                        {voted && username !== submission.author && (
                             <>
                                 <button
                                     className="unvotetext"
