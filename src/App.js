@@ -14,6 +14,7 @@ import UserHiddenSubmissions from "./views/submissions/userHiddenSubmissions";
 import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // Import the Submissions component
 import SearchResults from "./views/submissions/SearchResults";
 import AskSubmissions from "./views/submissions/AskSubmissions";
+import NewSubmissions from "./views/submissions/NewSubmissions";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                         <Route path="/:username/voted_submissions" element={<UserVotedSubmissions />} />
                         <Route path="search_submissions" element={<SearchResults />} />
                         <Route path={"/ask"} element={<AskSubmissions />} />
+                        <Route path={"/new"} element={<NewSubmissions />} />
                     </Routes>
                 </div>
             </Router>

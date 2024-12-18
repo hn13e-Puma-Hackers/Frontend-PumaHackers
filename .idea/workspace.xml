@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Task #240: Search submission logic">
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Task #244: View ask submissions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissionsList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +48,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "view__ask__submissions",
+    "git-widget-placeholder": "f__view__new__submissions__243",
     "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -110,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734542935383</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Task #244: View ask submissions">
+      <option name="closed" value="true" />
+      <created>1734543550532</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734543550532</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +145,7 @@
     <MESSAGE value="molts avenços" />
     <MESSAGE value="Avenços en comments" />
     <MESSAGE value="Task #240: Search submission logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task #240: Search submission logic" />
+    <MESSAGE value="Task #244: View ask submissions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task #244: View ask submissions" />
   </component>
 </project>

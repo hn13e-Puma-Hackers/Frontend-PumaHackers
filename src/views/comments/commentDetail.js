@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ApiKeyContext } from '../../context/ApiKeyContext';
-import axios from 'axios';
+import api from '../../api';
 import CommentItem from '../../components/commentItem';
 
 const CommentDetail = () => {
@@ -14,7 +14,7 @@ const CommentDetail = () => {
   useEffect(() => {
     const fetchComment = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/comments/${id}/`, {
+        const response = await api.get(`/api/comments/${id}/`, {
           headers: {
             'Authorization': apiKey,
           },
@@ -31,7 +31,7 @@ const CommentDetail = () => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://127.0.0.1:8000/api/comments/?origen=Comment&origin_id=${id}`, {
+      await api.post(`/api/comments/?origen=Comment&origin_id=${id}`, {
         text: commentText,
       }, {
         headers: {

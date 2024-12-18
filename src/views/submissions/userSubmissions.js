@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApiKeyContext } from '../../context/ApiKeyContext'; // Adjusted path
 import SubmissionItem from '../../components/submissionItem'; // Adjusted path
-import axios from 'axios';
+import api from '../../api';
 
 const UserSubmissions = () => {
   const { apiKey } = useContext(ApiKeyContext); // Obtiene la API key del contexto
@@ -12,7 +12,7 @@ const UserSubmissions = () => {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/${username}/submissions/`, {
+        const response = await api.get(`/api/${username}/submissions/`, {
           headers: {
             'Authorization': apiKey, // Usa la API key en los headers
           },
