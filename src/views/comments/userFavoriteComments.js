@@ -37,20 +37,22 @@ const UserFavoriteComments = () => {
           {/* Spacer */}
           <tr id="pagespace" title="" style={{ height: '10px' }}></tr>
 
-          {/* Submission Items */}
+          {/* Comment Items */}
           <tr>
             <td>
               <table border="0" cellPadding="0" cellSpacing="0">
                 <tbody>
-                {comments.map((comment, index) => (
+                  {comments.map((comment) => (
                     <CommentItem
-                    key={comment.id}
-                    comment={comment}
-                    onVote={() => {}}
-                    onUnvote={() => {}}
-                    onFavorite={() => {}}
-                    onUnfavorite={handleUnfavorite}/>
-                ))}
+                      key={comment.id}
+                      comment={comment}
+                      onVote={() => {}}
+                      onUnvote={() => {}}
+                      onFavorite={() => {}}
+
+                      onUnfavorite={handleUnfavorite}
+                    />
+                  ))}
                 </tbody>
               </table>
             </td>
