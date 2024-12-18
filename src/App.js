@@ -15,6 +15,7 @@ import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // 
 import SearchResults from "./views/submissions/SearchResults";
 import AskSubmissions from "./views/submissions/AskSubmissions";
 import NewSubmissions from "./views/submissions/NewSubmissions";
+import CreateSubmission from "./views/submissions/CreateSubmission";
 
 function App() {
     return (
@@ -38,6 +39,7 @@ function App() {
                         <Route path="search_submissions" element={<SearchResults />} />
                         <Route path={"/ask"} element={<AskSubmissions />} />
                         <Route path={"/new"} element={<NewSubmissions />} />
+                        <Route path={"submissions/add"} element={<CreateSubmission />} />
                     </Routes>
                 </div>
             </Router>

@@ -110,9 +110,8 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                     </a>)
                                 </span>
                             </>
-                        ) : (
-                            <a href={`/submission/${submission.id}`}>{submission.title}</a>
-                        )}
+                        ) : <Link to={`/submissions/${submission.id}`}>{submission.title}</Link>
+                        }
                     </span>
                 </td>
             </tr>
