@@ -162,38 +162,43 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             </>
                         )}
                         {/* Hide/Unhide */}
-                        {hidden ? (
-                        <button
-                            className="hide-link"
-                            style={{
-                                background: 'none',
-                                border: 'none',
-                                padding: 0,
-                                color: 'gray',
-                                cursor: 'pointer',
-                                fontSize: 'inherit',
-                            }}
-                            onClick={() => handleActionPatch(submission.id, 'unhide')}
-                        >
-                            un-hide
-                        </button>
-                        ) : (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'hide')}
-                            >
-                                hide
-                            </button>
-                        )}{' '}
-                        |{' '}
+                        {apiKey !== "" && (
+                            <>
+                                {hidden ? (
+                                    <button
+                                        className="hide-link"
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: 'gray',
+                                            cursor: 'pointer',
+                                            fontSize: 'inherit',
+                                        }}
+                                        onClick={() => handleActionPatch(submission.id, 'unhide')}
+                                    >
+                                        un-hide
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="hide-link"
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: 'gray',
+                                            cursor: 'pointer',
+                                            fontSize: 'inherit',
+                                        }}
+                                        onClick={() => handleActionPatch(submission.id, 'hide')}
+                                    >
+                                        hide
+                                    </button>
+                                )}
+                                {' '}|{' '}
+                            </>
+                        )}
+
                         {/* Edit/Delete */}
                             {username === submission.author && (
                             <>
@@ -228,9 +233,9 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                         >
                             {submission.comments_count} comments
                         </Link>{' '}
-                        |{' '}
+
                         {/* Favorite/Unfavorite */}
-                        <button
+                        {apiKey !== "" && ( <> |{' '}<button
                             className="favorite-link"
                             style={{
                                 background: 'none',
@@ -247,7 +252,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             }
                         >
                             {favorited ? 'un-favorite' : 'favorite'}
-                        </button>
+                        </button> </>)}
                     </span>
                 </td>
             </tr>

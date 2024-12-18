@@ -70,9 +70,20 @@ const SubmissionDetail = () => {
     return comments.map((comment) => (
         <div key={comment.id} style={{ marginLeft: comment.parent_comment ? '20px' : '0px' }}>
           <CommentItem comment={comment} />
-          <Link to={`/comment/${comment.id}`} style={{ marginLeft: '25px', cursor: 'pointer', textDecoration: 'underline', color: '#5a5a5a', fontSize: '10px' }}>
-            reply
-          </Link>
+          {apiKey !== "" && (
+              <Link
+                  to={`/comment/${comment.id}`}
+                  style={{
+                    marginLeft: '25px',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
+                    color: '#5a5a5a',
+                    fontSize: '10px',
+                  }}
+              >
+                reply
+              </Link>
+          )}
           <br/>
           <br/>
           {comment.replies && comment.replies.length > 0 && (
@@ -118,17 +129,21 @@ const SubmissionDetail = () => {
                   <tr>
                     <td colSpan="2"></td>
                     <td>
-                      <form onSubmit={handleCommentSubmit} style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <textarea
-                            value={commentText}
-                            onChange={(e) => setCommentText(e.target.value)}
-                            rows="8"
-                            cols="80"
-                            style={{marginLeft: '32px'}} // Ajusta el valor según sea necesario
-                        />
+                      <form onSubmit={handleCommentSubmit}
+                            style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+  <textarea
+      value={commentText}
+      onChange={(e) => setCommentText(e.target.value)}
+      rows="8"
+      cols="80"
+      style={{marginLeft: '32px'}} // Ajusta el valor según sea necesario
+  />
                         <br/>
-                        <button type="submit" style={{marginLeft: '32px'}}>add comment</button>
+                        {apiKey !== "" && (
+                            <button type="submit" style={{marginLeft: '32px'}}>add comment</button>
+                        )}
                       </form>
+
                     </td>
                   </tr>
                   <tr>

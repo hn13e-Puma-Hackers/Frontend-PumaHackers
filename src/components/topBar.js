@@ -18,6 +18,7 @@ const TopBar = () => {
     andreu7: { apiKey: 'XCDi4asG.sBy76k8eK468aY3i4468H1toJttdo0vg', username: 'andreu7',  isAuthenticated: true },
     broly369: { apiKey: 'iVXP3qQs.7l7mUTavytTWOWDMVPLHLzkCL8VMCtsh', username: 'broly369',  isAuthenticated: true },
     broly: { apiKey: 'xd5LoILA.lw47bHt77RbYKkD5o2VekXYidjGZ61AP', username: 'broly',  isAuthenticated: true },
+    anonymous: {apiKey: '', username: 'anonymous', isAuthenticated: false},
   };
 
   const [selectedUser, setSelectedUser] = useState(() => localStorage.getItem('selectedUser') || 'xavier');
@@ -74,11 +75,10 @@ const TopBar = () => {
                   <a href={currentUser.isAuthenticated ? `/threads/${currentUser.username}` : '#'} rel="nofollow">threads</a>{' '}
                   | <Link to="/comments" rel="nofollow">comments</Link> |{' '}
                   <Link to="/ask" rel="nofollow">ask</Link> |{' '}
-                  <Link to="/submissions/add" rel="nofollow">submit</Link> |{' '}
                   {currentUser.isAuthenticated && (
-                      <Link to={`/${currentUser.username}/favorite_submissions`}>favorite</Link>
-                  )}{' '}
-                  |
+                      <><Link to="/submissions/add" rel="nofollow">submit</Link> |{' '}
+                      <Link to={`/${currentUser.username}/favorite_submissions`}>favorite</Link> |</>
+                  )}
                   <form onSubmit={handleSearchSubmit} style={{ display: 'inline' }}>
                     <input type="text" name="query" placeholder="Search" value={searchQuery} onChange={handleSearchChange} required />
                     <button type="submit">Search</button>
@@ -89,17 +89,18 @@ const TopBar = () => {
                 <span className="pagetop">
                   {currentUser.isAuthenticated ? (
                       <>
-                        <span id="me"><a href={`/profile/${currentUser.username}`}>{currentUser.username}</a></span>{' '}
+                        <span id="me"><a
+                            href={`/profile/${currentUser.username}`}>{currentUser.username}</a></span>{' '}
                         (<span id="karma">{karma}</span>) |{' '}
-                        <select value={selectedUser} onChange={handleUserChange} style={{ fontSize: '14px' }}>
+                      </>
+                  ) : (
+                      <a href="/login?goto=news">Login </a>
+                  )}
+                  <select value={selectedUser} onChange={handleUserChange} style={{fontSize: '14px'}}>
                           {Object.keys(users).map((user) => (
                               <option key={user} value={user}>{user}</option>
                           ))}
                         </select>
-                      </>
-                  ) : (
-                      <a href="/login?goto=news">Login</a>
-                  )}
                 </span>
               </td>
             </tr>
