@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './submissionItem.css';
-import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 import api from "../api";
 
@@ -10,6 +10,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
     const [favorited, setFavorited] = useState(submission.favorited);
     const [voted, setVoted] = useState(submission.voted);
     const [hidden, setHidden] = useState(submission.hidden);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setFavorited(submission.favorited);
@@ -67,6 +68,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
             });
             setHidden(true);
             onHide(submissionId);
+            navigate('/');
             console.log('Delete exitoso:', response.data);
         } catch (error) {
             console.error('Error al hacer delete:', error);
