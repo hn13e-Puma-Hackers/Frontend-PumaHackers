@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import TopBar from '../components/topBar';
 
@@ -216,20 +216,20 @@ const UserProfile = () => {
           {/* Enlaces */}
           <div className="links-section" style={{ marginTop: '20px' }}>
             <div>
-            <a href={`/profile/${profile.username}/submissions`}>Submissions</a> |
-            <a href={`/profile/${profile.username}/comments`}> Comments</a>
+              <Link to={`/${profile.username}/submissions`}>Submissions</Link> |
+              <Link to={`/profile/${profile.username}/comments`}> Comments</Link>
             </div>
             <div>
-            <a href={`/profile/${profile.username}/favorite-submissions`}>Favorite Submissions</a> |
-            <a href={`/profile/${profile.username}/favorite-comments`}> Favorite Comments</a>
+            <Link to={`/profile/${profile.username}/favorite-submissions`}>Favorite Submissions</Link> |
+              <Link to={`/profile/${profile.username}/favorite-comments`}> Favorite Comments</Link>
             </div>
             {isOwnProfile && (
               <>
                 {' '}
-                | <a href={`/profile/${profile.username}/hidden-submissions`}> Hidden Submissions</a> |
-                <a href={`/profile/${profile.username}/voted-submissions`}> Voted Submissions</a> |
-                <a href={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</a> |
-                <a href={`/profile/${profile.username}/voted-comments`}> Voted Comments</a>
+                | <Link to={`/profile/${profile.username}/hidden-submissions`}> Hidden Submissions</Link> |
+                <Link to={`/profile/${profile.username}/voted-submissions`}> Voted Submissions</Link> |
+                <Link to={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</Link> |
+                <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
               </>
             )}
           </div>
