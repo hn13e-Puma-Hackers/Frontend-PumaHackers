@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../api';
 import { ApiKeyContext } from '../../context/ApiKeyContext';
 import CommentItem from '../../components/commentItem';
 
@@ -10,7 +10,7 @@ const AllComments = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/comments/', {
+        const response = await api.get('/api/comments/', {
           headers: {
             'Authorization': apiKey,
           },

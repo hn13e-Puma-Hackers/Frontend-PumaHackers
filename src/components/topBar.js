@@ -52,7 +52,7 @@ const TopBar = () => {
               <td style={{ lineHeight: '12pt', height: '10px' }}>
                 <span className="pagetop">
                   <b className="hnname"><a href="/">Puma Hacker News</a></b>{' '}
-                  <a href="/new" rel="nofollow">new</a> |{' '}
+                  <Link to="/new" rel="nofollow">new</Link> |{' '}
                   <a href={currentUser.isAuthenticated ? `/threads/${currentUser.username}` : '#'} rel="nofollow">threads</a>{' '}
                   | <Link to="/comments" rel="nofollow">comments</Link> |{' '}
                   <Link to="/ask" rel="nofollow">ask</Link> |{' '}

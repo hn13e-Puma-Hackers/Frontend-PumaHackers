@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {Link, useParams} from 'react-router-dom';
 import { ApiKeyContext } from '../../context/ApiKeyContext';
-import axios from 'axios';
+import api from '../../api';
 import SubmissionItem from '../../components/submissionItem';
 import CommentItem from "../../components/commentItem";
 
@@ -15,7 +15,7 @@ const SubmissionDetail = () => {
   useEffect(() => {
     const fetchSubmission = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/submissions/${id}/`, {
+        const response = await api.get(`api/submissions/${id}/`, {
           headers: {
             'Authorization': apiKey,
           },
@@ -28,7 +28,7 @@ const SubmissionDetail = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/comments_tree/?origen=Submission&origin_id=${id}`, {
+        const response = await api.get(`api/comments_tree/?origen=Submission&origin_id=${id}`, {
           headers: {
             'Authorization': apiKey,
           },
@@ -46,7 +46,7 @@ const SubmissionDetail = () => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://127.0.0.1:8000/api/comments/?origen=Submission&origin_id=${id}`, {
+      await api.post(`api/comments/?origen=Submission&origin_id=${id}`, {
         text: commentText,
       }, {
         headers: {
@@ -55,7 +55,7 @@ const SubmissionDetail = () => {
       });
       setCommentText('');
       // Re-fetch comments after adding a new one
-      const response = await axios.get(`http://127.0.0.1:8000/api/comments_tree/?origen=Submission&origin_id=${id}`, {
+      const response = await api.get(`api/comments_tree/?origen=Submission&origin_id=${id}`, {
         headers: {
           'Authorization': apiKey,
         },

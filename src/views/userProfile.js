@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import TopBar from '../components/topBar';
 
 const UserProfile = () => {
@@ -20,7 +20,7 @@ const UserProfile = () => {
   // Función para cargar el perfil desde la API
   const fetchProfile = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/profile/${username}/`, {
+      const response = await api.get(`/api/profile/${username}/`, {
         headers: {
           Authorization: apiKey,
         },
@@ -70,7 +70,7 @@ const UserProfile = () => {
     }
 
     try {
-      await axios.patch('http://127.0.0.1:8000/api/profile/', updateData, {
+      await api.patch('/api/profile/', updateData, {
         headers: {
           Authorization: apiKey,
           'Content-Type': 'multipart/form-data',

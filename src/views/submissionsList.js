@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 import SubmissionItem from '../components/submissionItem';
-import axios from 'axios';
+import api from '../api';
 
 const MainPage = () => {
   const { apiKey, username } = useContext(ApiKeyContext); // Obtiene la API key del contexto
@@ -12,7 +12,8 @@ const MainPage = () => {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/submissions/', {
+        const response = await api.get(`/api/submissions/`, {
+          params: { order_by: "relevance" },
           headers: {
             'Authorization': apiKey, // Usa la API key en los headers
           },

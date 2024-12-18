@@ -1,36 +1,30 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { ApiKeyContext } from '../../context/ApiKeyContext'; // Adjusted path
-import SubmissionItem from '../../components/submissionItem'; // Adjusted path
+import { ApiKeyContext } from '../../context/ApiKeyContext';
+import SubmissionItem from '../../components/submissionItem';
+import axios from 'axios';
 import api from '../../api';
-import { useLocation } from 'react-router-dom';
 
-const SearchResults = () => {
+const AskSubmissions = () => {
     const { apiKey } = useContext(ApiKeyContext); // Obtiene la API key del contexto
-    const { username } = useParams(); // Obtiene el username de la URL
     const [submissions, setSubmissions] = useState([]);
-    const location = useLocation();
-    const searchQuery = location.state;
 
     useEffect(() => {
         const fetchSubmissions = async () => {
             try {
-                const response = await api.get(`api/search_submissions/`, {
-                    params: { query: searchQuery },
+                const response = await api.get('/api/submissions/', {
+                    params: { order_by: "created_at" },
                     headers: {
                         'Authorization': apiKey, // Usa la API key en los headers
                     },
                 });
-                console.log(searchQuery);
                 setSubmissions(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching submissions:', error);
             }
         };
 
         fetchSubmissions();
-    }, [apiKey, username, searchQuery]); // Incluye searchQuery como dependencia
+    }, [apiKey]);
 
     const handleHide = (submissionId) => {
         setSubmissions(submissions.filter(sub => sub.id !== submissionId));
@@ -61,4 +55,4 @@ const SearchResults = () => {
     );
 };
 
-export default SearchResults;
+export default AskSubmissions;
