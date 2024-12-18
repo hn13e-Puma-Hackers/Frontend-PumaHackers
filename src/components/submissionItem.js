@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
+import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
 import api from "../api";
 
@@ -28,7 +29,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                 {},
                 {
                     headers: {
-                        Authorization: apiKey,
+                        'Authorization': apiKey,
                     },
                 }
             );
@@ -59,15 +60,13 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleDelete = async (submissionId) => {
         try {
-            const response = await api.delete(
-                `/api/submissions/${submissionId}/`,
-                {},
-                {
-                    headers: {
-                        Authorization: apiKey,
-                    },
-                }
-            );
+            const response = await api.delete(`api/submissions/${submissionId}/`, {
+                headers: {
+                    'Authorization': apiKey, // Usa la API key en los headers
+                },
+            });
+            setHidden(true);
+            onHide(submissionId);
             console.log('Delete exitoso:', response.data);
         } catch (error) {
             console.error('Error al hacer delete:', error);
@@ -113,9 +112,8 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                     </a>)
                                 </span>
                             </>
-                        ) : (
-                            <a href={`/submission/${submission.id}`}>{submission.title}</a>
-                        )}
+                        ) : <Link to={`/submissions/${submission.id}`}>{submission.title}</Link>
+                        }
                     </span>
                 </td>
             </tr>
@@ -195,7 +193,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                         )}{' '}
                         |{' '}
                         {/* Edit/Delete */}
-                        {username === submission.author && (
+                            {username === submission.author && (
                             <>
                                 <a
                                     href={`/submission/edit/${submission.id}`}

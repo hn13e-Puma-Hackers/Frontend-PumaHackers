@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api';
 import TopBar from '../components/topBar';
+import {ApiKeyContext} from "../context/ApiKeyContext";
 
 const UserProfile = () => {
+  const { apiKey, username: loggedInUser } = useContext(ApiKeyContext);
   const { username } = useParams();
   const [profile, setProfile] = useState(null);
   const [isOwnProfile, setIsOwnProfile] = useState(false);
@@ -13,11 +15,12 @@ const UserProfile = () => {
     banner: null,
     avatar: null,
   });
+  useEffect(() => {
+    if (apiKey && loggedInUser) {
+      fetchProfile();
+    }
+  }, [apiKey, loggedInUser, username]);
 
-  const apiKey = 'iVXP3qQs.7l7mUTavytTWOWDMVPLHLzkCL8VMCtsh'; // Tu API Key
-  const loggedInUser = 'broly369'; // Cambiar por lógica dinámica si es necesario
-
-  // Función para cargar el perfil desde la API
   const fetchProfile = async () => {
     try {
       const response = await api.get(`/api/profile/${username}/`, {
@@ -29,7 +32,6 @@ const UserProfile = () => {
 
       // Determinar si es el perfil propio
       setIsOwnProfile(username === loggedInUser);
-
       // Inicializar valores en el formulario
       setFormData({
         about: response.data.about || '',
@@ -88,24 +90,37 @@ const UserProfile = () => {
   };
 
   if (!profile) {
-    return <div>Loading...</div>;
+    return <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          textAlign: 'center',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          color: '#ff6600',
+        }}
+    >
+      Usuari no loguejat!!!
+    </div>;
   }
 
   return (
-    <>
-      {/* Barra de navegación superior */}
-      <center>
-        <table width="85%" bgcolor="#f6f6ef">
-          <tbody>
+      <>
+        {/* Barra de navegación superior */}
+        <center>
+          <table width="85%" bgcolor="#f6f6ef">
+            <tbody>
             <tr>
               <td colSpan="3">
               </td>
             </tr>
-          </tbody>
-        </table>
-      </center>
+            </tbody>
+          </table>
+        </center>
 
-      {/* Pantalla de perfil de usuario */}
+        {/* Pantalla de perfil de usuario */}
       <div className="profile-container" style={{ width: '85%', margin: '0 auto', textAlign: 'left' }}>
         <form onSubmit={handleUpdate} encType="multipart/form-data">
           {/* Mostrar el banner */}
@@ -226,9 +241,8 @@ const UserProfile = () => {
             {isOwnProfile && (
               <>
                 {' '}
-                | <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
-                <Link to={`/${profile.username}/voted_submissions`}>Voted Submissions</Link> |
-                <Link to={`/profile/${profile.username}/hidden-comments`}> Hidden Comments</Link> |
+                <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
+                <Link to={`/${profile.username}/voted_submissions`}> Voted Submissions</Link> |
                 <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
               </>
             )}
