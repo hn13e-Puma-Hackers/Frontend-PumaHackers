@@ -37,9 +37,10 @@ function App() {
                         <Route path="/:username/hidden_submissions" element={<UserHiddenSubmissions />} />
                         <Route path="/:username/voted_submissions" element={<UserVotedSubmissions />} />
                         <Route path="search_submissions" element={<SearchResults />} />
-                        <Route path={"/ask"} element={<AskSubmissions />} />
-                        <Route path={"/new"} element={<NewSubmissions />} />
-                        <Route path={"submissions/add"} element={<CreateSubmission />} />
+                        <Route path="/ask" element={<AskSubmissions />} />
+                        <Route path="/new" element={<NewSubmissions />} />
+                        <Route path="submissions/add" element={<CreateSubmission />} />
+                        <Route path="/submission/edit/:id" element={<CreateSubmission />} />
                     </Routes>
                 </div>
             </Router>
