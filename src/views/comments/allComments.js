@@ -24,6 +24,22 @@ const AllComments = () => {
     fetchComments();
   }, [apiKey]);
 
+  const handleVote = (commentId) => {
+    setComments(comments.map(comment =>
+      comment.id === commentId ? { ...comment, votes: comment.votes + 1, voted: true } : comment
+    ));
+  };
+
+  const handleUnvote = (commentId) => {
+    setComments(comments.map(comment =>
+      comment.id === commentId ? { ...comment, votes: comment.votes - 1, voted: false } : comment
+    ));
+  };
+
+  const handleDeleteComment = (commentId) => {
+    setComments(comments.filter(comment => comment.id !== commentId));
+  };
+
   return (
     <center>
       <table width="85%" bgcolor="#f6f6ef">
@@ -40,10 +56,11 @@ const AllComments = () => {
                     <CommentItem
                       key={comment.id}
                       comment={comment}
-                      onVote={() => {}}
-                      onUnvote={() => {}}
+                      onVote={handleVote}
+                      onUnvote={handleUnvote}
                       onFavorite={() => {}}
                       onUnfavorite={() => {}}
+                      onDelete={handleDeleteComment}
                     />
                   ))}
                 </tbody>

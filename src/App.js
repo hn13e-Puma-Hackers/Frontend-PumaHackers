@@ -16,6 +16,8 @@ import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // 
 import SearchResults from "./views/submissions/SearchResults";
 import AskSubmissions from "./views/submissions/AskSubmissions";
 import NewSubmissions from "./views/submissions/NewSubmissions";
+import CreateSubmission from "./views/submissions/CreateSubmission";
+import EditComment from "./views/comments/EditComment";
 
 function App() {
     return (
@@ -40,6 +42,12 @@ function App() {
                         <Route path="search_submissions" element={<SearchResults />} />
                         <Route path={"/ask"} element={<AskSubmissions />} />
                         <Route path={"/new"} element={<NewSubmissions />} />
+                        <Route path={"submissions/add"} element={<CreateSubmission />} />
+                        <Route path="/comment/edit/:id" element={<EditComment />} />
+                        <Route path="/ask" element={<AskSubmissions />} />
+                        <Route path="/new" element={<NewSubmissions />} />
+                        <Route path="submissions/add" element={<CreateSubmission />} />
+                        <Route path="/submission/edit/:id" element={<CreateSubmission />} />
                     </Routes>
                 </div>
             </Router>

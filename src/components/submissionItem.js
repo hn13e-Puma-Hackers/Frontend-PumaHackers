@@ -1,20 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './submissionItem.css';
-import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
+import api from "../api";
 
 const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
     const [voted, setVoted] = useState(submission.voted);
     const [hidden, setHidden] = useState(submission.hidden);
+    const navigate = useNavigate();
+    const [votes, setVotes] = useState(submission.votes);
 
     useEffect(() => {
         setFavorited(submission.favorited);
         setVoted(submission.voted);
         setHidden(submission.hidden);
-    }, [submission.favorited, submission.voted, submission.hidden]);
+        setVotes(submission.votes);
+    }, [submission.favorited, submission.voted, submission.hidden, submission.votes]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -23,34 +27,35 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleActionPatch = async (submissionId, url) => {
         try {
-            const response = await axios.patch(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/${url}/`,
+            const response = await api.patch(
+                `/api/submissions/${submissionId}/${url}/`,
                 {},
                 {
                     headers: {
-                        Authorization: apiKey,
+                        'Authorization': apiKey,
                     },
                 }
             );
             console.log(`${url} exitoso:`, response.data);
 
-            // Actualiza el estado local si la acción es de favorite/unfavorite, vote/unvote o hide/unhide
             if (url === 'favorite') {
                 setFavorited(true);
             } else if (url === 'unfavorite') {
                 setFavorited(false);
-                onUnfavorite(submissionId); // Llama a la función onUnfavorite para remover la submission
+                onUnfavorite(submissionId);
             } else if (url === 'vote') {
                 setVoted(true);
+                setVotes(votes + 1);
             } else if (url === 'unvote') {
                 setVoted(false);
-                onUnvote(submissionId); // Llama a la función onUnvote para remover la submission
+                setVotes(votes - 1);
+                onUnvote(submissionId);
             } else if (url === 'hide') {
                 setHidden(true);
-                onHide(submissionId); // Llama a la función onHide para remover la submission
+                onHide(submissionId);
             } else if (url === 'unhide') {
                 setHidden(false);
-                onUnhide(submissionId); // Llama a la función onUnhide para remover la submission
+                onUnhide(submissionId);
             }
         } catch (error) {
             console.error(`Error al realizar la acción ${url}:`, error);
@@ -59,15 +64,14 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleDelete = async (submissionId) => {
         try {
-            const response = await axios.delete(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/`,
-                {},
-                {
-                    headers: {
-                        Authorization: apiKey,
-                    },
-                }
-            );
+            const response = await api.delete(`api/submissions/${submissionId}/`, {
+                headers: {
+                    'Authorization': apiKey, // Usa la API key en los headers
+                },
+            });
+            setHidden(true);
+            onHide(submissionId);
+            navigate('/');
             console.log('Delete exitoso:', response.data);
         } catch (error) {
             console.error('Error al hacer delete:', error);
@@ -76,7 +80,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     return (
         <>
-            {/* Fila principal */}
             <tr className="athing" id={`submission_${submission.id}`}>
                 <td align="right" valign="top" className="title">
                     <span className="rank">{rank}</span>
@@ -113,21 +116,18 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                     </a>)
                                 </span>
                             </>
-                        ) : (
-                            <a href={`/submission/${submission.id}`}>{submission.title}</a>
-                        )}
+                        ) : <Link to={`/submissions/${submission.id}`}>{submission.title}</Link>
+                        }
                     </span>
                 </td>
             </tr>
-
-            {/* Fila de detalles */}
             <tr>
                 <td colSpan="2"></td>
                 <td className="subtext">
                     <span className="subline">
                         {/* Número de votos */}
                         <span className="score" id={`score_${submission.id}`}>
-                            {submission.votes} points
+                            {votes} points
                         </span>{' '}
                         by{' '}
                         {submission.author ? (
@@ -162,47 +162,52 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             </>
                         )}
                         {/* Hide/Unhide */}
-                        {hidden ? (
-                        <button
-                            className="hide-link"
-                            style={{
-                                background: 'none',
-                                border: 'none',
-                                padding: 0,
-                                color: 'gray',
-                                cursor: 'pointer',
-                                fontSize: 'inherit',
-                            }}
-                            onClick={() => handleActionPatch(submission.id, 'unhide')}
-                        >
-                            un-hide
-                        </button>
-                        ) : (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'hide')}
-                            >
-                                hide
-                            </button>
-                        )}{' '}
-                        |{' '}
+                        {apiKey !== "" && (
+                            <>
+                                {hidden ? (
+                                    <button
+                                        className="hide-link"
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: 'gray',
+                                            cursor: 'pointer',
+                                            fontSize: 'inherit',
+                                        }}
+                                        onClick={() => handleActionPatch(submission.id, 'unhide')}
+                                    >
+                                        un-hide
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="hide-link"
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: 'gray',
+                                            cursor: 'pointer',
+                                            fontSize: 'inherit',
+                                        }}
+                                        onClick={() => handleActionPatch(submission.id, 'hide')}
+                                    >
+                                        hide
+                                    </button>
+                                )}
+                                {' '}|{' '}
+                            </>
+                        )}
+
                         {/* Edit/Delete */}
                             {username === submission.author && (
                             <>
-                                <a
-                                    href={`/submission/edit/${submission.id}`}
+                                <Link
+                                    to={`/submission/edit/${submission.id}`}
                                     style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
                                 >
                                     edit
-                                </a>{' '}
+                                </Link>{' '}
                                 |{' '}
                                 <button
                                     style={{
@@ -221,16 +226,15 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                 |{' '}
                             </>
                         )}
-                        {/* Comments */}
                         <Link
                             to={`/submissions/${submission.id}`}
                             style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
                         >
                             {submission.comments_count} comments
                         </Link>{' '}
-                        |{' '}
+
                         {/* Favorite/Unfavorite */}
-                        <button
+                        {apiKey !== "" && ( <> |{' '}<button
                             className="favorite-link"
                             style={{
                                 background: 'none',
@@ -247,7 +251,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             }
                         >
                             {favorited ? 'un-favorite' : 'favorite'}
-                        </button>
+                        </button> </>)}
                     </span>
                 </td>
             </tr>

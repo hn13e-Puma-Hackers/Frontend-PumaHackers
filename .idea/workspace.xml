@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Task #244: View ask submissions">
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="delete edit i vote comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/submissionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submissionItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/AskSubmissions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/comments/commentDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/comments/commentDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissions/CreateSubmission.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/CreateSubmission.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissionsList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "f__view__new__submissions__243",
+    "git-widget-placeholder": "Merging f__FuncionsCommentItem__246",
     "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,7 +57,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\anyer\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\andre\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -123,7 +124,47 @@
       <option name="project" value="LOCAL" />
       <updated>1734543550532</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="favrite/unfavorite voted/unvoted">
+      <option name="closed" value="true" />
+      <created>1734555265593</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555265593</updated>
+    </task>
+    <task id="LOCAL-00007" summary="merge">
+      <option name="closed" value="true" />
+      <created>1734555512508</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555512508</updated>
+    </task>
+    <task id="LOCAL-00008" summary="parent comment">
+      <option name="closed" value="true" />
+      <created>1734555644547</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555644547</updated>
+    </task>
+    <task id="LOCAL-00009" summary="delete comment">
+      <option name="closed" value="true" />
+      <created>1734557360718</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1734557360718</updated>
+    </task>
+    <task id="LOCAL-00010" summary="delete edit i vote comment">
+      <option name="closed" value="true" />
+      <created>1734562104576</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734562104576</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +187,11 @@
     <MESSAGE value="Avenços en comments" />
     <MESSAGE value="Task #240: Search submission logic" />
     <MESSAGE value="Task #244: View ask submissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task #244: View ask submissions" />
+    <MESSAGE value="favrite/unfavorite voted/unvoted" />
+    <MESSAGE value="merge" />
+    <MESSAGE value="parent comment" />
+    <MESSAGE value="delete comment" />
+    <MESSAGE value="delete edit i vote comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete edit i vote comment" />
   </component>
 </project>
