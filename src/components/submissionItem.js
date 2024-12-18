@@ -7,12 +7,10 @@ import { ApiKeyContext } from '../context/ApiKeyContext';
 const SubmissionItem = ({ submission, rank, onHide }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
-    const [hidden, setHidden] = useState(submission.hidden);
 
     useEffect(() => {
         setFavorited(submission.favorited);
-        setHidden(submission.hidden);
-    }, [submission.favorited, submission.hidden]);
+    }, [submission.favorited]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -32,16 +30,13 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
             );
             console.log(`${url} exitoso:`, response.data);
 
-            // Actualiza el estado local si la acción es de favorite/unfavorite o hide/unhide
+            // Actualiza el estado local si la acción es de favorite/unfavorite
             if (url === 'favorite') {
                 setFavorited(true);
             } else if (url === 'unfavorite') {
                 setFavorited(false);
             } else if (url === 'hide') {
-                setHidden(true);
                 onHide(submissionId); // Llama a la función onHide para remover la submission
-            } else if (url === 'unhide') {
-                setHidden(false);
             }
         } catch (error) {
             console.error(`Error al realizar la acción ${url}:`, error);
@@ -64,10 +59,6 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
             console.error('Error al hacer delete:', error);
         }
     };
-
-    if (hidden) {
-        return null; // No renderiza la submission si está escondida
-    }
 
     return (
         <>
@@ -156,38 +147,21 @@ const SubmissionItem = ({ submission, rank, onHide }) => {
                                 |{' '}
                             </>
                         )}
-                        {/* Hide/Unhide */}
-                        {hidden ? (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'unhide')}
-                            >
-                                un-hide
-                            </button>
-                        ) : (
-                            <button
-                                className="hide-link"
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: 'gray',
-                                    cursor: 'pointer',
-                                    fontSize: 'inherit',
-                                }}
-                                onClick={() => handleActionPatch(submission.id, 'hide')}
-                            >
-                                hide
-                            </button>
-                        )}{' '}
+                        {/* Hide */}
+                        <button
+                            className="hide-link"
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                padding: 0,
+                                color: 'gray',
+                                cursor: 'pointer',
+                                fontSize: 'inherit',
+                            }}
+                            onClick={() => handleActionPatch(submission.id, 'hide')}
+                        >
+                            hide
+                        </button>{' '}
                         |{' '}
                         {/* Edit/Delete */}
                         {username === submission.author && (
