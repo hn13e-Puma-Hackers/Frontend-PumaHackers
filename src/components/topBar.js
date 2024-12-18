@@ -111,18 +111,11 @@ const TopBar = () => {
                   <a href="/ask" rel="nofollow">ask</a> |{' '}
                   <a href="/submit" rel="nofollow">submit</a> |{' '}
                   {currentUser.isAuthenticated && (
-                      <>
-                        <a
-                            href={`/favorites/${currentUser.username}`}
-                            rel="nofollow"
-                        >
-                          favorites
-                        </a>{' '}
-                        |
-                      </>
-                  )}
+                    <Link to={`/${currentUser.username}/favorite_submissions`}>favorite</Link>
+                  )}{' '}
+                  |
                   <form
-                      action="/search"
+                      action="/search/"
                       method="GET"
                       style={{ display: 'inline' }}
                   >
