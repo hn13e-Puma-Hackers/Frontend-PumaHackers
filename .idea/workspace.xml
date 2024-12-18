@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Dev push">
-      <change beforePath="$PROJECT_DIR$/src/views/submissionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissionsList.js" afterDir="false" />
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Avenços en comments">
+      <change afterPath="$PROJECT_DIR$/src/views/userProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/submissionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submissionItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -32,7 +41,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging f__SubmissionDetail__216",
     "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -40,7 +49,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\anyer\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\andre\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -63,6 +72,9 @@
       <workItem from="1734283121556" duration="2601000" />
       <workItem from="1734354915438" duration="63000" />
       <workItem from="1734354995342" duration="3185000" />
+      <workItem from="1734382599895" duration="2810000" />
+      <workItem from="1734471125902" duration="4483000" />
+      <workItem from="1734512222841" duration="6494000" />
     </task>
     <task id="LOCAL-00001" summary="Dev push">
       <option name="closed" value="true" />
@@ -72,7 +84,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734284128044</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="molts avenços">
+      <option name="closed" value="true" />
+      <created>1734476018968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734476018968</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Avenços en comments">
+      <option name="closed" value="true" />
+      <created>1734518978888</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734518978888</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +119,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dev push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev push" />
+    <MESSAGE value="molts avenços" />
+    <MESSAGE value="Avenços en comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Avenços en comments" />
   </component>
 </project>

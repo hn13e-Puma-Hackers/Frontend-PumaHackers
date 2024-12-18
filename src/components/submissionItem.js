@@ -53,7 +53,7 @@ const SubmissionItem = ({ submission, rank }) => {
             {/* Fila principal */}
             <tr className="athing" id={`submission_${submission.id}`}>
                 <td align="right" valign="top" className="title">
-                    <span className="rank">{rank}.</span>
+                    <span className="rank">{rank}</span>
                 </td>
                 <td valign="top" className="votelinks">
                     <center>
@@ -189,13 +189,13 @@ const SubmissionItem = ({ submission, rank }) => {
                       >
                           delete
                       </button>{' '}
-                      |
+                      |{' '}
                   </>
               )}
               {/* Comments */}
-              <a href={`/submission/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
-              {submission.comments_count} comments
-            </a>{' '}
+              <Link to={`/submissions/${submission.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
+                            {submission.comments_count} comments
+                        </Link>{' '}
               | {' '}
               {/* Favorite/Unfavorite */}
               <button
