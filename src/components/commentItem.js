@@ -38,28 +38,38 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
       <tr className="athing comtr" id={`comment-${comment.id}`}>
         <td valign="top" className="votelinks">
           <center>
-            {user.isAuthenticated && !comment.voted && user.username !== comment.author ? (
-              <button
-                type="button"
-                style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                onClick={() => onVote(comment.id)}
-              >
-                <div className="votearrow" title="upvote"></div>
-              </button>
+            {!comment.voted && user.username !== comment.author ? (
+                <button
+                    className="votearrow"
+                    title="upvote"
+                    style={{cursor: 'pointer'}}
+                    onClick={() => onVote(comment.id)}
+                ></button>
             ) : (
-              <button type="button" className="votearrow" style={{ visibility: 'hidden' }}></button>
+                <button
+                    type="button"
+                    className="votearrow"
+                    style={{visibility: 'hidden'}}
+                ></button>
             )}
           </center>
         </td>
         <td className="default">
-          <div style={{ marginTop: '2px', marginBottom: '-10px' }}>
+          <div style={{marginTop: '2px', marginBottom: '-10px'}}>
             <span className="comhead">
               {comment.votes} points by{' '}
               <Link to={`/profile/${comment.author}`}>
                 <button
-                  type="button"
-                  style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                  className="btn-profile"
+                    type="button"
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      color: 'gray',
+                      cursor: 'pointer',
+                      fontSize: 'inherit'
+                    }}
+                    className="btn-profile"
                 >
                   <span className="hnuser">{comment.author}</span>
                 </button>

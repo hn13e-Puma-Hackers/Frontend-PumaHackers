@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { ApiKeyContext } from '../../context/ApiKeyContext';
 import axios from 'axios';
 import SubmissionItem from '../../components/submissionItem';
+import CommentItem from "../../components/commentItem";
 
 const SubmissionDetail = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const SubmissionDetail = () => {
             'Authorization': apiKey,
           },
         });
-        setComments(response.data.comments || []);
+        setComments(response.data || []);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
@@ -59,10 +60,28 @@ const SubmissionDetail = () => {
           'Authorization': apiKey,
         },
       });
-      setComments(response.data.comments || []);
+      setComments(response.data || []);
     } catch (error) {
       console.error('Error adding comment:', error);
     }
+  };
+
+  const renderComments = (comments) => {
+    return comments.map((comment) => (
+        <div key={comment.id} style={{ marginLeft: comment.parent_comment ? '20px' : '0px' }}>
+          <CommentItem comment={comment} />
+          <Link to={`/comment/${comment.id}`} style={{ marginLeft: '25px', cursor: 'pointer', textDecoration: 'underline', color: '#5a5a5a', fontSize: '10px' }}>
+            reply
+          </Link>
+          <br/>
+          <br/>
+          {comment.replies && comment.replies.length > 0 && (
+              <div style={{ marginLeft: '20px' }}>
+                {renderComments(comment.replies)}
+              </div>
+          )}
+        </div>
+    ));
   };
 
   if (!submission) {
@@ -84,7 +103,7 @@ const SubmissionDetail = () => {
                       <span className="titleline">
                         <SubmissionItem
                           submission={submission}
-                          rank={1} // Puedes ajustar el rank según sea necesario
+                          rank={null} // Puedes ajustar el rank según sea necesario // Puedes ajustar el rank según sea necesario
                           onVote={() => {}}
                           onUnvote={() => {}}
                           onHide={() => {}}
@@ -103,10 +122,12 @@ const SubmissionDetail = () => {
                         <textarea
                             value={commentText}
                             onChange={(e) => setCommentText(e.target.value)}
-                            style={{marginLeft: '20px'}} // Ajusta el valor según sea necesario
+                            rows="8"
+                            cols="80"
+                            style={{marginLeft: '32px'}} // Ajusta el valor según sea necesario
                         />
                         <br/>
-                        <button type="submit" style={{marginLeft: '20px'}}>add comment</button>
+                        <button type="submit" style={{marginLeft: '32px'}}>add comment</button>
                       </form>
                     </td>
                   </tr>
@@ -118,11 +139,7 @@ const SubmissionDetail = () => {
                     <td>
                       <table border="0" className="comment-tree">
                         <tbody>
-                        {comments.map((comment) => (
-                            <tr key={comment.id}>
-                              <td>{comment.text}</td>
-                            </tr>
-                          ))}
+                        {renderComments(comments)}
                         </tbody>
                       </table>
                     </td>

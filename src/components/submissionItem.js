@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
-import './submissionItem.css';
 import {ApiKeyContext} from "../context/ApiKeyContext";
 
 const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, onFavorite, onUnfavorite, onDelete }) => {
@@ -20,7 +19,7 @@ const SubmissionItem = ({ submission, rank, onVote, onUnvote, onHide, onUnhide, 
             {/* Fila principal */}
             <tr className="athing" id={`submission_${submission.id}`}>
                 <td align="right" valign="top" className="title">
-                    <span className="rank">{rank}.</span>
+                    <span className="rank">{rank}</span>
                 </td>
                 <td valign="top" className="votelinks">
                     <center>

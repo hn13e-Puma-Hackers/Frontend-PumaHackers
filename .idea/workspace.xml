@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="Dev push">
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="molts avenços">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.49faa5e3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.49faa5e3.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.dc54bc04.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/submissionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submissionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +75,8 @@
       <workItem from="1734354915438" duration="63000" />
       <workItem from="1734354995342" duration="3185000" />
       <workItem from="1734382599895" duration="2810000" />
-      <workItem from="1734471125902" duration="4306000" />
+      <workItem from="1734471125902" duration="4483000" />
+      <workItem from="1734512222841" duration="6106000" />
     </task>
     <task id="LOCAL-00001" summary="Dev push">
       <option name="closed" value="true" />
@@ -93,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734284128044</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="molts avenços">
+      <option name="closed" value="true" />
+      <created>1734476018968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734476018968</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +113,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dev push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev push" />
+    <MESSAGE value="molts avenços" />
+    <option name="LAST_COMMIT_MESSAGE" value="molts avenços" />
   </component>
 </project>
