@@ -45,6 +45,36 @@ const CommentDetail = () => {
     }
   };
 
+  const handleVote = async (commentId) => {
+    try {
+      const response = await api.patch(`/api/comments/${commentId}/vote/`, {}, {
+        headers: {
+          'Authorization': apiKey,
+        },
+      });
+      setComment(response.data);
+    } catch (error) {
+      console.error('Error voting comment:', error);
+    }
+  };
+
+  const handleUnvote = async (commentId) => {
+    try {
+      const response = await api.patch(`/api/comments/${commentId}/unvote/`, {}, {
+        headers: {
+          'Authorization': apiKey,
+        },
+      });
+      setComment(response.data);
+    } catch (error) {
+      console.error('Error unvoting comment:', error);
+    }
+  };
+
+  const handleDeleteRedirect = (submissionId) => {
+    navigate(`/submissions/${submissionId}`);
+  };
+
   if (!comment) {
     return <div>Loading...</div>;
   }
@@ -60,7 +90,12 @@ const CommentDetail = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <CommentItem comment={comment} />
+                      <CommentItem
+                        comment={comment}
+                        onVote={handleVote}
+                        onUnvote={handleUnvote}
+                        onDeleteRedirect={handleDeleteRedirect}
+                      />
                     </td>
                   </tr>
                   <tr>

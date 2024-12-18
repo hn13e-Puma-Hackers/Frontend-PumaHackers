@@ -8,6 +8,13 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDe
   const [submission, setSubmission] = useState(null);
   const [voted, setVoted] = useState(comment.voted);
   const [favorited, setFavorited] = useState(comment.favorited);
+  const [votes, setVotes] = useState(comment.votes);
+
+  useEffect(() => {
+    setVoted(comment.voted);
+    setFavorited(comment.favorited);
+    setVotes(comment.votes);
+  }, [comment.voted, comment.favorited, comment.votes]);
 
   useEffect(() => {
     const fetchSubmission = async () => {
@@ -47,9 +54,11 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDe
         onUnfavorite(commentId);
       } else if (url === 'vote') {
         setVoted(true);
+        setVotes(votes + 1);
         onVote(commentId);
       } else if (url === 'unvote') {
         setVoted(false);
+        setVotes(votes - 1);
         onUnvote(commentId);
       }
     } catch (error) {
@@ -100,7 +109,7 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDe
         <td className="default">
           <div style={{ marginTop: '2px', marginBottom: '-10px' }}>
             <span className="comhead">
-              {comment.votes} points by{' '}
+              {votes} points by{' '}
               <Link to={`/profile/${comment.author}`}>
                 <button
                   type="button"
@@ -163,6 +172,10 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite, onDe
                 >
                   delete
                 </button>
+              {' '} | {' '}
+                <Link to={`/comment/edit/${comment.id}`} style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}>
+                  edit
+                </Link>
               </>
                 )}
               <span className="navs">

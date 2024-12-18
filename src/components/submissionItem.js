@@ -1,21 +1,22 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
-import axios from 'axios';
-import { ApiKeyContext } from '../context/ApiKeyContext';
 import api from "../api";
+import { ApiKeyContext } from '../context/ApiKeyContext';
 
 const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
     const [favorited, setFavorited] = useState(submission.favorited);
     const [voted, setVoted] = useState(submission.voted);
     const [hidden, setHidden] = useState(submission.hidden);
+    const [votes, setVotes] = useState(submission.votes);
 
     useEffect(() => {
         setFavorited(submission.favorited);
         setVoted(submission.voted);
         setHidden(submission.hidden);
-    }, [submission.favorited, submission.voted, submission.hidden]);
+        setVotes(submission.votes);
+    }, [submission.favorited, submission.voted, submission.hidden, submission.votes]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -35,23 +36,24 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
             );
             console.log(`${url} exitoso:`, response.data);
 
-            // Actualiza el estado local si la acción es de favorite/unfavorite, vote/unvote o hide/unhide
             if (url === 'favorite') {
                 setFavorited(true);
             } else if (url === 'unfavorite') {
                 setFavorited(false);
-                onUnfavorite(submissionId); // Llama a la función onUnfavorite para remover la submission
+                onUnfavorite(submissionId);
             } else if (url === 'vote') {
                 setVoted(true);
+                setVotes(votes + 1);
             } else if (url === 'unvote') {
                 setVoted(false);
-                onUnvote(submissionId); // Llama a la función onUnvote para remover la submission
+                setVotes(votes - 1);
+                onUnvote(submissionId);
             } else if (url === 'hide') {
                 setHidden(true);
-                onHide(submissionId); // Llama a la función onHide para remover la submission
+                onHide(submissionId);
             } else if (url === 'unhide') {
                 setHidden(false);
-                onUnhide(submissionId); // Llama a la función onUnhide para remover la submission
+                onUnhide(submissionId);
             }
         } catch (error) {
             console.error(`Error al realizar la acción ${url}:`, error);
@@ -62,7 +64,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
         try {
             const response = await api.delete(`api/submissions/${submissionId}/`, {
                 headers: {
-                    'Authorization': apiKey, // Usa la API key en los headers
+                    'Authorization': apiKey,
                 },
             });
             setHidden(true);
@@ -75,7 +77,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     return (
         <>
-            {/* Fila principal */}
             <tr className="athing" id={`submission_${submission.id}`}>
                 <td align="right" valign="top" className="title">
                     <span className="rank">{rank}</span>
@@ -117,15 +118,12 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                     </span>
                 </td>
             </tr>
-
-            {/* Fila de detalles */}
             <tr>
                 <td colSpan="2"></td>
                 <td className="subtext">
                     <span className="subline">
-                        {/* Número de votos */}
                         <span className="score" id={`score_${submission.id}`}>
-                            {submission.votes} points
+                            {votes} points
                         </span>{' '}
                         by{' '}
                         {submission.author ? (
@@ -139,7 +137,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             {formatDate(submission.created_at)} ago
                         </span>{' '}
                         |{' '}
-                        {/* Unvote */}
                         {voted && username !== submission.author && (
                             <>
                                 <button
@@ -159,7 +156,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                 |{' '}
                             </>
                         )}
-                        {/* Hide/Unhide */}
                         {hidden ? (
                         <button
                             className="hide-link"
@@ -192,8 +188,7 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             </button>
                         )}{' '}
                         |{' '}
-                        {/* Edit/Delete */}
-                            {username === submission.author && (
+                        {username === submission.author && (
                             <>
                                 <a
                                     href={`/submission/edit/${submission.id}`}
@@ -219,7 +214,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                                 |{' '}
                             </>
                         )}
-                        {/* Comments */}
                         <Link
                             to={`/submissions/${submission.id}`}
                             style={{ color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
@@ -227,7 +221,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                             {submission.comments_count} comments
                         </Link>{' '}
                         |{' '}
-                        {/* Favorite/Unfavorite */}
                         <button
                             className="favorite-link"
                             style={{
@@ -249,8 +242,6 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
                     </span>
                 </td>
             </tr>
-
-            {/* Espaciador */}
             <tr className="spacer" style={{ height: '5px' }}></tr>
         </>
     );
