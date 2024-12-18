@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './submissionItem.css';
-import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
+import api from "../api";
 
 const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUnvote }) => {
     const { apiKey, username } = useContext(ApiKeyContext);
@@ -23,8 +23,8 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleActionPatch = async (submissionId, url) => {
         try {
-            const response = await axios.patch(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/${url}/`,
+            const response = await api.patch(
+                `/api/submissions/${submissionId}/${url}/`,
                 {},
                 {
                     headers: {
@@ -59,8 +59,8 @@ const SubmissionItem = ({ submission, rank, onHide, onUnhide, onUnfavorite, onUn
 
     const handleDelete = async (submissionId) => {
         try {
-            const response = await axios.delete(
-                `http://127.0.0.1:8000/api/submissions/${submissionId}/`,
+            const response = await api.delete(
+                `/api/submissions/${submissionId}/`,
                 {},
                 {
                     headers: {

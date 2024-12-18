@@ -1,20 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { ApiKeyContext } from '../context/ApiKeyContext';
+import api from "../api";
 
 const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) => {
   const { apiKey, username } = useContext(ApiKeyContext);
   const [submission, setSubmission] = useState(null);
-  const user = {
-    isAuthenticated: true, // Change according to authentication state
-    username: 'anyer',
-  };
+  const [voted, setVoted] = useState(comment.voted);
+  const [favorited, setFavorited] = useState(comment.favorited);
 
   useEffect(() => {
     const fetchSubmission = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/submissions/${comment.submission}/`, {
+        const response = await api.get(`/api/submissions/${comment.submission}/`, {
           headers: {
             'Authorization': apiKey,
           },
@@ -28,6 +26,37 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
     fetchSubmission();
   }, [apiKey, comment.submission]);
 
+  const handleActionPatch = async (commentId, url) => {
+    try {
+      const response = await api.patch(
+        `/api/comments/${commentId}/${url}/`,
+        {},
+        {
+          headers: {
+            Authorization: apiKey,
+          },
+        }
+      );
+      console.log(`${url} successful:`, response.data);
+
+      if (url === 'favorite') {
+        setFavorited(true);
+        onFavorite(commentId);
+      } else if (url === 'unfavorite') {
+        setFavorited(false);
+        onUnfavorite(commentId);
+      } else if (url === 'vote') {
+        setVoted(true);
+        onVote(commentId);
+      } else if (url === 'unvote') {
+        setVoted(false);
+        onUnvote(commentId);
+      }
+    } catch (error) {
+      console.error(`Error performing action ${url}:`, error);
+    }
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleString(); // Readable format
@@ -38,63 +67,63 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
       <tr className="athing comtr" id={`comment-${comment.id}`}>
         <td valign="top" className="votelinks">
           <center>
-            {!comment.voted && user.username !== comment.author ? (
-                <button
-                    className="votearrow"
-                    title="upvote"
-                    style={{cursor: 'pointer'}}
-                    onClick={() => onVote(comment.id)}
-                ></button>
+            {!voted && username !== comment.author ? (
+              <button
+                className="votearrow"
+                title="upvote"
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleActionPatch(comment.id, 'vote')}
+              ></button>
             ) : (
-                <button
-                    type="button"
-                    className="votearrow"
-                    style={{visibility: 'hidden'}}
-                ></button>
+              <button
+                type="button"
+                className="votearrow"
+                style={{ visibility: 'hidden' }}
+              ></button>
             )}
           </center>
         </td>
         <td className="default">
-          <div style={{marginTop: '2px', marginBottom: '-10px'}}>
+          <div style={{ marginTop: '2px', marginBottom: '-10px' }}>
             <span className="comhead">
               {comment.votes} points by{' '}
               <Link to={`/profile/${comment.author}`}>
                 <button
-                    type="button"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                      color: 'gray',
-                      cursor: 'pointer',
-                      fontSize: 'inherit'
-                    }}
-                    className="btn-profile"
+                  type="button"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    color: 'gray',
+                    cursor: 'pointer',
+                    fontSize: 'inherit'
+                  }}
+                  className="btn-profile"
                 >
                   <span className="hnuser">{comment.author}</span>
                 </button>
               </Link>{' '}
               <span className="age">{formatDate(comment.created_at)} ago</span>
-              {user.isAuthenticated && comment.voted && user.username !== comment.author && (
+              {username && voted && username !== comment.author && (
                 <>
-                {' '} | {' '}
+                  {' '} | {' '}
                   <button
                     type="button"
                     style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                    onClick={() => onUnvote(comment.id)}
+                    onClick={() => handleActionPatch(comment.id, 'unvote')}
                   >
                     unvote
                   </button>
                 </>
               )}
-              {user.isAuthenticated && (
+              {username && (
                 <>{' '}
                   | {' '}
-                  {comment.favorited ? (
+                  {favorited ? (
                     <button
                       type="button"
                       style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                      onClick={() => onUnfavorite(comment.id)}
+                      onClick={() => handleActionPatch(comment.id, 'unfavorite')}
                       className="delete-link"
                     >
                       un-favorite
@@ -103,7 +132,7 @@ const CommentItem = ({ comment, onVote, onUnvote, onFavorite, onUnfavorite }) =>
                     <button
                       type="button"
                       style={{ background: 'none', border: 'none', padding: 0, color: 'gray', cursor: 'pointer', fontSize: 'inherit' }}
-                      onClick={() => onFavorite(comment.id)}
+                      onClick={() => handleActionPatch(comment.id, 'favorite')}
                       className="delete-link"
                     >
                       favorite
