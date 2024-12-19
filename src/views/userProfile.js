@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api';
-import TopBar from '../components/topBar';
 import {ApiKeyContext} from "../context/ApiKeyContext";
 
 const UserProfile = () => {
@@ -236,7 +235,7 @@ const UserProfile = () => {
             </div>
             <div>
             <Link to={`/${profile.username}/favorite_submissions`}>Favorite Submissions</Link> |
-              <Link to={`${profile.username}/favorite_comments`}> Favorite Comments</Link>
+            <Link to={`/${profile.username}/favorite_comments`}> Favorite Comments</Link>
             </div>
             {isOwnProfile && (
               <>
