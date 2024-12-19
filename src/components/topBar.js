@@ -10,14 +10,8 @@ const TopBar = () => {
   const navigate = useNavigate();
 
   const users = {
-    anyer5: { apiKey: 'DvDe8pCx.lmMYqkm6vsQzrzjYbSPw9D8dFHPbXfQM', username: 'anyer5', isAuthenticated: true },
-    anyer3: { apiKey: 'Jgn3uq7g.6JatifZNviZUhCFCzwwKKi59NMZaUwOl', username: 'anyer3',  isAuthenticated: true },
-    xavier: { apiKey: 'u3o5nyf6.IElFeLGqYUHZpdf8jPMoT9HcHFbvv0YN', username: 'xavier',  isAuthenticated: true },
-    xavier8: { apiKey: 'SFpQI65l.X7vyqIaZCAoYxW79uKNulO7ACTGvHYU3', username: 'xavier8',  isAuthenticated: true },
-    andreu: { apiKey: '0aECejJj.rFapl0TTamPZwqodC7uwX6qmDsqfsjri', username: 'andreu',  isAuthenticated: true },
-    andreu7: { apiKey: 'XCDi4asG.sBy76k8eK468aY3i4468H1toJttdo0vg', username: 'andreu7',  isAuthenticated: true },
-    broly369: { apiKey: 'iVXP3qQs.7l7mUTavytTWOWDMVPLHLzkCL8VMCtsh', username: 'broly369',  isAuthenticated: true },
-    broly: { apiKey: 'xd5LoILA.lw47bHt77RbYKkD5o2VekXYidjGZ61AP', username: 'broly',  isAuthenticated: true },
+    anyer: { apiKey: 'knZY82G0.ubNOqTFSeJBQB6F2hMZKpANRiFOswB05', username: 'anyer', isAuthenticated: true},
+    xavier: { apiKey: 'z5vPhAkZ.HJFzqF7apBh3FyVF46lvqO0BCqT3CVEP', username: 'xavier', isAuthenticated: true},
     anonymous: {apiKey: '', username: 'anonymous', isAuthenticated: false},
   };
 
