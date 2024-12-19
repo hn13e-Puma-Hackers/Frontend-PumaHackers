@@ -101,7 +101,7 @@ const UserProfile = () => {
           color: '#ff6600',
         }}
     >
-      Usuari no loguejat!!!
+      
     </div>;
   }
 
