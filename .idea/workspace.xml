@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="delete edit i vote comment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/userProfile.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="f_FuncionsCommentItem_246" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2qGJdmX7RxGpmQg9kVBHttYm4Gy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "error__comments",
+    "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\andre\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="" />
+      <created>1734283068731</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734283068731</updated>
+      <workItem from="1734283070632" duration="41000" />
+      <workItem from="1734283121556" duration="2601000" />
+      <workItem from="1734354915438" duration="63000" />
+      <workItem from="1734354995342" duration="3185000" />
+      <workItem from="1734382599895" duration="2810000" />
+      <workItem from="1734471125902" duration="4483000" />
+      <workItem from="1734512222841" duration="6494000" />
+    </task>
+    <task id="LOCAL-00001" summary="Dev push">
+      <option name="closed" value="true" />
+      <created>1734284128044</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734284128044</updated>
+    </task>
+    <task id="LOCAL-00002" summary="molts avenços">
+      <option name="closed" value="true" />
+      <created>1734476018968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734476018968</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Avenços en comments">
+      <option name="closed" value="true" />
+      <created>1734518978888</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734518978888</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Task #240: Search submission logic">
+      <option name="closed" value="true" />
+      <created>1734542935383</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734542935383</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Task #244: View ask submissions">
+      <option name="closed" value="true" />
+      <created>1734543550532</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734543550532</updated>
+    </task>
+    <task id="LOCAL-00006" summary="favrite/unfavorite voted/unvoted">
+      <option name="closed" value="true" />
+      <created>1734555265593</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555265593</updated>
+    </task>
+    <task id="LOCAL-00007" summary="merge">
+      <option name="closed" value="true" />
+      <created>1734555512508</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555512508</updated>
+    </task>
+    <task id="LOCAL-00008" summary="parent comment">
+      <option name="closed" value="true" />
+      <created>1734555644547</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555644547</updated>
+    </task>
+    <task id="LOCAL-00009" summary="delete comment">
+      <option name="closed" value="true" />
+      <created>1734557360718</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1734557360718</updated>
+    </task>
+    <task id="LOCAL-00010" summary="delete edit i vote comment">
+      <option name="closed" value="true" />
+      <created>1734562104576</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734562104576</updated>
+    </task>
+    <task id="LOCAL-00011" summary="delete edit i vote comment">
+      <option name="closed" value="true" />
+      <created>1734563329654</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734563329654</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Dev push" />
+    <MESSAGE value="molts avenços" />
+    <MESSAGE value="Avenços en comments" />
+    <MESSAGE value="Task #240: Search submission logic" />
+    <MESSAGE value="Task #244: View ask submissions" />
+    <MESSAGE value="favrite/unfavorite voted/unvoted" />
+    <MESSAGE value="merge" />
+    <MESSAGE value="parent comment" />
+    <MESSAGE value="delete comment" />
+    <MESSAGE value="delete edit i vote comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete edit i vote comment" />
+  </component>
+</project>

@@ -1,0 +1,41 @@
+name: Deploy to Fly.io
+
+on:
+  push:
+    branches:
+      - main  # Despliega automáticamente al hacer push a main
+
+jobs:
+  deploy:
+    name: Deploy to Fly.io
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Descarga el código fuente del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+       # 2. Instala Node.js y dependencias
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+
+      # 3. Genera los archivos estáticos
+      - name: Build static files
+        run: npm run build
+
+      # 2. Instala Flyctl
+      - name: Install Flyctl
+        run: |
+          curl -L https://fly.io/install.sh | sh
+          echo "$HOME/.fly/bin" >> $GITHUB_PATH
+
+      # 3. Despliega la aplicación en Fly.io
+      - name: Deploy to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --config ./fly.toml
+
