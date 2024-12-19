@@ -2,29 +2,27 @@ import React, { useContext, useEffect, useState } from 'react';
 import api from '../../api';
 import { ApiKeyContext } from '../../context/ApiKeyContext';
 import CommentItem from '../../components/commentItem';
-import { useParams } from 'react-router-dom';
 
-const UserFavoriteComments = () => {
+const UserVotedComments = () => {
   const { apiKey } = useContext(ApiKeyContext);
-  const { username } = useParams(); // Obtiene el username de la URL
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await api.get(`/api/${username}/favorite_comments/`, {
+        const response = await api.get('/api/upvoted_comments/', {
           headers: {
             'Authorization': apiKey,
           },
         });
         setComments(response.data);
       } catch (error) {
-        console.error('Error fetching favorite comments:', error);
+        console.error('Error fetching upvoted comments:', error);
       }
     };
 
     fetchComments();
-  }, [apiKey, username]);
+  }, [apiKey]);
 
   const handleVote = (commentId) => {
     setComments(comments.map(comment =>
@@ -75,4 +73,4 @@ const UserFavoriteComments = () => {
   );
 };
 
-export default UserFavoriteComments;
+export default UserVotedComments;

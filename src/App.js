@@ -9,10 +9,12 @@ import AllComments from './views/comments/allComments';
 import './components/submissionItem.css';
 import CommentDetail from "./views/comments/commentDetail";
 import UserSubmissions from "./views/submissions/userSubmissions";
+import UserComments from "./views/comments/userComments";
 import UserFavoriteSubmissions from "./views/submissions/userFavoriteSubmissions";
 import UserFavoriteComments from "./views/comments/userFavoriteComments";
 import UserHiddenSubmissions from "./views/submissions/userHiddenSubmissions";
 import UserVotedSubmissions from "./views/submissions/userVotedSubmissions"; // Import the Submissions component
+import UserVotedComments from './views/comments/userVotedComments';
 import SearchResults from "./views/submissions/SearchResults";
 import AskSubmissions from "./views/submissions/AskSubmissions";
 import NewSubmissions from "./views/submissions/NewSubmissions";
@@ -35,10 +37,12 @@ function App() {
                         <Route path="/comments" element={<AllComments />} />
                         <Route path="/comment/:id" element={<CommentDetail />} />
                         <Route path="/:username/submissions" element={<UserSubmissions />} />
+                        <Route path="/:username/comments" element={<UserComments />} />
                         <Route path="/:username/favorite_submissions" element={<UserFavoriteSubmissions />} />
                         <Route path="/:username/favorite_comments" element={<UserFavoriteComments />} />
                         <Route path="/:username/hidden_submissions" element={<UserHiddenSubmissions />} />
                         <Route path="/:username/voted_submissions" element={<UserVotedSubmissions />} />
+                        <Route path="/:username/voted_comments" element={<UserVotedComments />} />
                         <Route path="search_submissions" element={<SearchResults />} />
                         <Route path={"/ask"} element={<AskSubmissions />} />
                         <Route path={"/new"} element={<NewSubmissions />} />
