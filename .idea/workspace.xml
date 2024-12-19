@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f43517d5-2106-4b71-856f-b64b7fd4eb58" name="Changes" comment="delete edit i vote comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/submissionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submissionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/comments/commentDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/comments/commentDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/CreateSubmission.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/CreateSubmission.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/submissions/submissionDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/userProfile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="f_FuncionsCommentItem_246" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +43,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging f__FuncionsCommentItem__246",
+    "git-widget-placeholder": "error__comments",
     "last_opened_file_path": "C:/Users/anyer/Documents/ASW/FrontendPumaHackers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -164,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734562104576</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="delete edit i vote comment">
+      <option name="closed" value="true" />
+      <created>1734563329654</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734563329654</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
