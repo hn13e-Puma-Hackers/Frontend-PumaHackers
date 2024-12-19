@@ -1,3 +1,9 @@
+https://hn13e-puma-hackers.github.io/Frontend-PumaHackers/  
+Andreu Sabater  
+Anyer Moreno  
+Xavier Rodríguez  
+Edgar Bosque 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
