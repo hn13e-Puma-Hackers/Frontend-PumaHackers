@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Frontend-PumaHackers/static/css/main.397afa36.css",
-    "main.js": "/Frontend-PumaHackers/static/js/main.6cb01dff.js",
+    "main.js": "/Frontend-PumaHackers/static/js/main.f59634bf.js",
     "static/media/pumaphoto.jpeg": "/Frontend-PumaHackers/static/media/pumaphoto.8f28a87732864f2b5c30.jpeg",
     "index.html": "/Frontend-PumaHackers/index.html",
     "static/media/triangle.svg": "/Frontend-PumaHackers/static/media/triangle.ed3f9588a2f08363689b.svg",
     "main.397afa36.css.map": "/Frontend-PumaHackers/static/css/main.397afa36.css.map",
-    "main.6cb01dff.js.map": "/Frontend-PumaHackers/static/js/main.6cb01dff.js.map"
+    "main.f59634bf.js.map": "/Frontend-PumaHackers/static/js/main.f59634bf.js.map"
   },
   "entrypoints": [
     "static/css/main.397afa36.css",
-    "static/js/main.6cb01dff.js"
+    "static/js/main.f59634bf.js"
   ]
 }
