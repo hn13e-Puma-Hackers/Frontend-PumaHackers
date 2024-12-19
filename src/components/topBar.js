@@ -72,7 +72,7 @@ const TopBar = () => {
                 <span className="pagetop">
                   <b className="hnname"><a href="/">Puma Hacker News</a></b>{' '}
                   <Link to="/new" rel="nofollow">new</Link> |{' '}
-                  <a href={currentUser.isAuthenticated ? `/threads/${currentUser.username}` : '#'} rel="nofollow">threads</a>{' '}
+                  <a href={currentUser.isAuthenticated ? `/${currentUser.username}/comments` : '#'} rel="nofollow">threads</a>{' '}
                   | <Link to="/comments" rel="nofollow">comments</Link> |{' '}
                   <Link to="/ask" rel="nofollow">ask</Link> |{' '}
                   {currentUser.isAuthenticated && (

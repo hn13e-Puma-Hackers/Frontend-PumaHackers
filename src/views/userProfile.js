@@ -231,7 +231,7 @@ const UserProfile = () => {
           <div className="links-section" style={{ marginTop: '20px' }}>
             <div>
               <Link to={`/${profile.username}/submissions`}>Submissions</Link> |
-              <Link to={`/profile/${profile.username}/comments`}> Comments</Link>
+              <Link to={`/${profile.username}/comments`}> Comments</Link>
             </div>
             <div>
             <Link to={`/${profile.username}/favorite_submissions`}>Favorite Submissions</Link> |
@@ -242,7 +242,7 @@ const UserProfile = () => {
                 {' '}
                 <Link to={`/${profile.username}/hidden_submissions`}>Hidden Submissions</Link> |
                 <Link to={`/${profile.username}/voted_submissions`}> Voted Submissions</Link> |
-                <Link to={`/profile/${profile.username}/voted-comments`}> Voted Comments</Link>
+                <Link to={`/${profile.username}/voted_comments`}> Voted Comments</Link>
               </>
             )}
           </div>

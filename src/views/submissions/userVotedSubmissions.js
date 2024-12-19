@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { ApiKeyContext } from '../../context/ApiKeyContext'; // Adjusted path
 import SubmissionItem from '../../components/submissionItem'; // Adjusted path
 import api from '../../api';
