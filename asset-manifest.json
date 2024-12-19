@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/css/main.c9ea7928.css",
-    "main.js": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/js/main.2284ae68.js",
-    "static/media/pumaphoto.jpeg": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/media/pumaphoto.8f28a87732864f2b5c30.jpeg",
-    "index.html": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/index.html",
-    "static/media/triangle.svg": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/media/triangle.ed3f9588a2f08363689b.svg",
-    "main.c9ea7928.css.map": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/css/main.c9ea7928.css.map",
-    "main.2284ae68.js.map": "/hn13e-Puma-Hackers/Frontend-PumaHackers.git/static/js/main.2284ae68.js.map"
+    "main.css": "/Frontend-PumaHackers/static/css/main.397afa36.css",
+    "main.js": "/Frontend-PumaHackers/static/js/main.6cb01dff.js",
+    "static/media/pumaphoto.jpeg": "/Frontend-PumaHackers/static/media/pumaphoto.8f28a87732864f2b5c30.jpeg",
+    "index.html": "/Frontend-PumaHackers/index.html",
+    "static/media/triangle.svg": "/Frontend-PumaHackers/static/media/triangle.ed3f9588a2f08363689b.svg",
+    "main.397afa36.css.map": "/Frontend-PumaHackers/static/css/main.397afa36.css.map",
+    "main.6cb01dff.js.map": "/Frontend-PumaHackers/static/js/main.6cb01dff.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9ea7928.css",
-    "static/js/main.2284ae68.js"
+    "static/css/main.397afa36.css",
+    "static/js/main.6cb01dff.js"
   ]
 }
